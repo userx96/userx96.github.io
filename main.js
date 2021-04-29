@@ -469,8 +469,16 @@ $(".sohbet1").click(function(){
 $(".message-left-arrow").click(function(){
   $(".sohbet1message").fadeOut(250);
 
-
 });
+
+$(".custom-wallpaper-button").click(function(){
+    $(".wallpaper-custom-url-container").fadeIn(400);
+});
+
+$("#wallpaper-decline").click(function(){
+  $(".wallpaper-custom-url-container").fadeOut(400);
+});
+
 
 function msgGonder() {
   var mesaj = $(".sohbet1-input").val();
@@ -498,9 +506,26 @@ function msgGonder() {
 
   }
 }
-
 $(".message-gonder").on("click", msgGonder)
 
+function customWallpaper() {
+   var url = $("#custom-url").val();
+
+if (url == "") {
+
+}else {
+   $(".anaMenuContainer").css({
+     'background-image': "url("+ url +")",
+     'background-size':"cover", 
+     'background-position': "center",
+     'transition': "background-image 0.9s ease"
+    })
+    $("#wallpaper-ok").click(function(){
+
+    });
+  }
+}
+$("#wallpaper-ok").on("click", customWallpaper)
 
   $(document).ready(function(){
     var tarih=new Date();
@@ -1626,6 +1651,6 @@ $(".message-gonder").on("click", msgGonder)
   clock();
   var iWatch = new iWatch();
 
-  //Launcher Javascript
+
 
   
