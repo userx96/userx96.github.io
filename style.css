@@ -4795,4 +4795,70 @@ canvas {
       color: #222222;
   }
  
+.custom-wallpaper-button {
+  position: absolute;
+  width: 45px;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.241);
+  right: 10px;
+  top: 33px;
+  border-radius: 5px;
+  background-image: url("https://img.icons8.com/ios/344/link--v1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  filter: contrast(250%);
+  cursor: pointer;
+  background-color: #88888882;
+}
 
+.wallpaper-custom-url-container {
+  position: absolute;
+  display: none;
+  width: 262px;
+  height: 75px;
+  bottom: 80px;
+  border: 1px solid rgba(0, 0, 0, 0.433);
+  background: rgb(191, 190, 190);
+}
+
+#custom-url {
+  position: absolute;
+  width: 220px;
+  height: 35px;
+  left: 19px;
+  top: 5px;
+  border: none;
+  border-radius: 5px;
+  background: rgb(255, 255, 255);
+  outline: none;
+  padding-left: 10px;
+}
+
+#wallpaper-ok {
+  position: absolute;
+  color: #4873b3;
+  font-size: 20px;
+  right: 40px;
+  bottom: 1px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#wallpaper-ok:hover{
+  color: #1d4580;
+}
+
+#wallpaper-decline {
+  position: absolute;
+  color: #c91414;
+  font-size: 20px;
+  left: 30px;
+  bottom: 2px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#wallpaper-decline:hover {
+  color: #bf4444;
+}
