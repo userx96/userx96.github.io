@@ -3542,7 +3542,7 @@ canvas {
 }
 
 .sohbet1message {
-  display: ;
+  display: none;
   position: absolute;
   top: 0px;
   left: -2px;
