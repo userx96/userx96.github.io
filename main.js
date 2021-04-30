@@ -479,6 +479,57 @@ $("#wallpaper-decline").click(function(){
   $(".wallpaper-custom-url-container").fadeOut(400);
 });
 
+$("#edit").click(function(){
+    $("#notHeader").fadeOut(100);
+    $(".backButton").fadeOut(100);
+    $(" #not-icerik-container").fadeIn(100);
+});
+
+$(".backButton-not").click(function(){
+    $("#not-icerik-container").fadeOut(100);
+    $(".backButton").fadeIn(100);
+    $("#not-goster-container").fadeOut(100);
+});
+
+function notEkle() {
+  var not = $("#not-textarea").val();
+  var not_baslik = $("#not-baslik-input").val();
+    var tarih=new Date();
+    var gun=tarih.getDay();
+    var gunler= ['Pazar', 'Pazartesi', 'Salı','Çarşamba','Perşembe','Cuma','Cumartesi']; 
+    var today = new Date();
+    var hours = today.getHours();
+    var mins = today.getMinutes();
+    const addZero = num => {
+      if(num < 10) { return '0' + num };
+      return num;
+    }  
+
+  if (not == "" || not_baslik == ""){
+} 
+  else {
+    $("#not-app-notes").prepend("<li id='not-1'><span id='not-title'>" + not_baslik + "</span><span id='not-desc'>"+ "<span id='not-saat'>"+ addZero(hours)+ ":"+ addZero(mins) +"</span>" +"<span id='not-day'>"+gunler[gun]+"</span>" + " " + not + "</span></li>");
+    $(" #not-icerik-container").fadeOut(100);
+    $(".backButton").fadeIn(100);
+
+  }
+}
+$("#not-kaydet").on("click", notEkle)
+$("#not-kaydet").click(function(){
+  $("textarea").val("");
+  $("#not-textarea-container input").val("");
+});
+
+function notGoster(){
+ // global değişken olayını yapamadık. Notlar ekleniyor çalışıyor fakat editlemeye girilmiyo. 
+$("#not-goster-container").fadeIn(100);
+$(".backButton").fadeOut(100);
+$(".backButton-not").fadeIn(100);
+
+
+
+}
+$("#not-1").on("click", notGoster)
 
 function msgGonder() {
   var mesaj = $(".sohbet1-input").val();
@@ -507,6 +558,9 @@ function msgGonder() {
   }
 }
 $(".message-gonder").on("click", msgGonder)
+$(".message-gonder").click(function(){
+  $(".sohbet1-message-input input").val("");
+});
 
 function customWallpaper() {
    var url = $("#custom-url").val();
@@ -1651,6 +1705,6 @@ $("#wallpaper-ok").on("click", customWallpaper)
   clock();
   var iWatch = new iWatch();
 
-
+  //Launcher Javascript
 
   
