@@ -48,7 +48,7 @@
           class='red-dot2'></span>
       </span>
       <span class="tarih"></span>
-      <span class="toplamKodSatiri">Bu Projedeki <br> Toplam kod satırı: <b>7025</b></span>
+      <span class="toplamKodSatiri">Bu Projedeki <br> Toplam kod satırı: <b>7344</b></span>
       <span class="userx-phone">USERX</span>
       <span class='digital-clock'>
         <span class='hour'></span><span class='red-dot'>:</span><span class='min'></span><span class='red-dot'></span>
@@ -512,39 +512,50 @@
       </div>
      
       <div class="notContainer">
-        <span class="backButton"></span>
-        <span class="notes">Notlar</span>
-      </div>
+        <div class="notHeader">
+         <span class="backButton"></span>
+         <span class="notes">Notlar</span>
+         <span id="edit">Ekle</span> 
 
-      <div class="notApp">
-        <div class="button" <span class="text">To-Do List</span>
-          <span class="icon"><i class="fas fa-sort-down"></i></span>
+        <div class="notContentContainer">
+
+          <ul id="not-app-notes">
+             <!-- <li id="not-1">
+              <span id="not-title">Başlık</span>
+              <span id="not-desc">Burada notla ilgili yazılar</span> 
+            </li>
+            <li id="not-1">
+              <span id="not-title">Başlık</span>
+              <span id="not-desc">Burada notla ilgili yazılar</span> 
+            </li>  -->
+          </ul> 
+
         </div>
-        <div class="field">
-          <input id="not" type="text" required placeholder="Not eklemek için dokunun...">
-          <span class="add-btn">Ekle</span>
+
         </div>
-        <ul>
-          <!-- <li><span><i class="fa fa-trash"></i></span>Go to shopping</li>
-      <li><span><i class="fa fa-trash"></i></span>Read a newspaper</li>
-      <li><span><i class="fa fa-trash"></i></span>Go to college</li>
-      <li><span><i class="fa fa-trash"></i></span>Buy a new phone</li> -->
-        </ul>
+        <div id="not-icerik-container">
+          <div id="not-icerik-header">
+            <span class="backButton-not"></span>
+            <span id="not-geri">Geri</span>
+            <span id="not-kaydet">Kaydet</span>
+          </div>
+          <div id="not-textarea-container">
+            <input type="text" placeholder="Başlık..." id="not-baslik-input">
+            <textarea id="not-textarea" placeholder="Bir şeyler yazın..."></textarea>
+          </div>
+        </div>
+
+        <div id="not-goster-container">
+          <div id="not-goster-header">
+            <span class="backButton-not"></span>
+            <span id="not-geri">Geri</span>
+          </div>
+          <div id="not-goster-content">
+            <span id="not-goster-baslik">Başlık</span>
+          </div>
+        </div>
+
       </div>
-      <script>
-        $('.add-btn').click(function () {
-          $('ul').append("<li> <span></i></span>" + $('#not').val() + "</li>");
-          $('#not').val("");
-        });
-        $('ul').on("click", 'span', function () {
-          $(this).parent().fadeOut(500, function () {
-            $(this).remove();
-          });
-        });
-        $('.icon').click(function () {
-          $('.field').toggleClass("hide");
-        })
-      </script>
 
 
       <div class="hesap">
