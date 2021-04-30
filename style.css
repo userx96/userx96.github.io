@@ -1062,21 +1062,6 @@
   z-index: 10;
   border-radius: 15px;
 }
-  .notContainer {
-    position: absolute;
-    display: none;
-    width: 261px;
-    height: 563px;
-    background-color: rgb(255, 255, 255);
-    z-index: 8;
-    left: 74px;
-    top: 17px;
-    opacity: 10.7;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    border-top-left-radius: 27px;
-    border-top-right-radius: 27px;
-  }
   
 .takvimContainer {
   position: absolute;
@@ -1108,8 +1093,8 @@
     height: 18px;
     box-sizing: border-box;
     position: absolute;
-    left: 20px;
-    top: 40px;
+    left: 13px;
+    top: 12px;
     transform: rotate(-135deg);
     z-index: 19;
     cursor: pointer;
@@ -1140,6 +1125,44 @@
       transform-origin: 100% 0;
       transition:.2s ease;
     }
+
+    span.backButton-not {
+      width: 18px;
+      height: 18px;
+      box-sizing: border-box;
+      position: absolute;
+      left: 13px;
+      top: 42px;
+      transform: rotate(-135deg);
+      z-index: 19;
+      cursor: pointer;
+    }
+      .backButton-not::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        border-width: .8vmin .8vmin 0 0;
+        border-style: solid;
+        border-color: #eea13c;
+        transition: .2s ease;
+        display: block;
+        transform-origin: 100% 0;
+      }
+    
+      
+      .backButton-not::after {
+        content: '';
+        float: left;
+        position: relative;
+        top: -100%;
+        width: 100%;
+        height: 100%;
+        border-width: 0 .8vmin 0 0;
+        border-style: solid;
+        border-color: #eea13c;
+        transform-origin: 100% 0;
+        transition:.2s ease;
+      }
 
     span.backButtonBlue {
       width: 18px;
@@ -1292,127 +1315,31 @@
           transform-origin: 100% 0;
           transition:.2s ease;
         }
+   
         
+    #edit {
+    font-family: "San Francisco";
+    position: absolute;
+    top: 12px;
+    font-size: 20px;
+    color: #eea13c;
+    right: 13px; 
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+    }    
+
     .notes {
     font-family: "San Francisco";
     position: absolute;
-    top: 75px;
+    top: 40px;
     font-size: 30px;
     color: rgb(0, 0, 0);
-    left: 12px; 
+    left: 20px; 
     font-weight: bold;
     }
     @import url('https://fonts.googleapis.com/css?family=Montserrat:600|Noto+Sans|Open+Sans:400,700&display=swap');
-    .notApp{
-      display: none;
-      position: absolute;
-      top: 135px;
-      left: 75px;
-      width: 261px;
-      height: 350px;
-      background: #ffffff;
-      border-radius: 5px;
-      z-index: 8;
-    }
-    .notApp .button{
-      width: 261px;
-      background: #ffffff;
-      height: 50px;
-      padding: 0 20px;
-      border-radius: 5px 5px 0 0;
-      display:none;
-    }
-    .button .text{
-      font-size: 25px;
-      font-weight: 600;
-      line-height: 50px;
-      letter-spacing: 1px;
-      font-family: 'San Francisco';
-    }
-    .button .icon{
-      font-size: 30px;
-      float: right;
-      line-height: 40px;
-      cursor: pointer;
-    }
-    .notApp .field{
-      height: 45px;
-      width: 262px;
-      left: -1px;
-      background: #c0c0c0;
-      position: absolute;
-      display: block;
-    }
-    .field.hide{
-      display: none;
-    }
-    .field input{
-      height: 100%;
-      width: 100%;
-      padding-left: 15px;
-      font-size: 18px;
-      outline: none;
-      background: none;
-      color: rgb(49, 49, 49);
-      border: 2px solid #a2a1a1;
-    }
-    .field .add-btn{
-      position: absolute;
-      top: 50%;
-      right: 10px;
-      transform: translateY(-50%);
-      background: #ffffff;
-      font-size: 17px;
-      padding: 4px 8px;
-      border-radius: 3px;
-      cursor: pointer;
-      font-family: 'San Francisco';
-      display: none;
-    }
-    input:valid ~ .add-btn{
-      display: block;
-    }
-    .notApp ul{
-      list-style: none;
-      overflow: visible;
-    }
-    ul li{
-      height: 45px;
-      width: 200px;
-      line-height: 45px;
-      background: transparent;
-      font-family: 'San Franciscos',sans-serif;
-      padding-top: 45px;
-      position: relative;
-      left: 5px;
-      z-index: -1;
-    }
-    ul li:nth-child(2n){
-      background: transparent;
-    }
-    ul li:last-child{
-      border-radius: 0 0 5px 5px;
-    }
-    ul li:last-child span{
-      border-radius: 0 5px 5px 5px;
-    }
-    ul li span{
-      margin-right: 20px;
-      height: 45px;
-      width: 45px;
-      margin-left: -45px;
-      background: #e74c3c;
-      display: inline-block;
-      line-height: 45px;
-      text-align: center;
-      cursor: pointer;
-      border-radius: 0 5px 5px 0;
-      transition: 0.3s ease;
-    }
-    ul li:hover span{
-      margin-left: 0px;
-    }
-    
+  
     body{
       margin: 0;
       padding: 0;
@@ -4861,4 +4788,204 @@ canvas {
 
 #wallpaper-decline:hover {
   color: #bf4444;
+}
+
+.notContainer {
+  position: absolute;
+  display: none;
+  width: 261px;
+  height: 563px;
+  background-color: rgb(255, 255, 255);
+  z-index: 8;
+  left: 74px;
+  top: 17px;
+  opacity: 10.7;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-top-left-radius: 27px;
+  border-top-right-radius: 27px;
+}
+
+.notHeader {
+  position: relative;
+  width: 261.5px;
+  height: 90px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.145);
+  top: 30px;
+}
+
+.notContentContainer {
+  position: relative;
+  height: 444px;
+  width: 261.5px;
+  top: 90px;
+  left: -1px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: scroll;
+}
+
+#not-app-notes {
+  list-style-type: none;
+  margin-left: -5px;
+  padding: 0px;
+}
+
+#not-1 {
+  position: relative;
+  width: 261px;
+  height: 80px;
+  background: rgb(255, 255, 255);
+  margin-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.145);
+  overflow: hidden;
+  cursor: pointer;
+  left: 10px;
+}
+
+#not-title {
+  position: absolute;
+  font-size: 20px;
+  color: rgb(84, 83, 83);
+  font-weight: 500;
+  margin-left: 10px;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+#not-desc {
+  position: absolute;
+  font-size: 17px;
+  color: rgb(84, 83, 83);
+  font-weight: 500;
+  margin-left: 10px;
+  margin-top: 30px;
+}
+
+ #not-icerik-container {
+  position: absolute;
+  display: none;
+  background: rgb(255, 255, 255);
+  width: 261px;
+  height: 563px;
+  top: 0px;
+  left: 0px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  overflow: scroll;
+  overflow: hidden;
+} 
+
+#not-geri {
+  position: absolute;
+  left: 30px;
+  top: 37px;
+  font-size: 20px;
+  color: #eea13c;
+}
+
+#not-textarea-container {
+  position: absolute;
+  width: 261px;
+  height: 563px;
+  top: 80px;
+  left: 0px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: scroll;
+  overflow: hidden;
+}
+
+#not-textarea {
+  position: absolute;
+  height: 380px;
+  width: 261px;
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.172);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.172);
+  outline: none;
+  resize: none;
+  left: 0.2px;
+  padding-left: 10px;
+  font-size: 17px;
+  background: rgb(240, 240, 240);
+  top: 50px;
+}
+
+#not-baslik-input {
+  position: absolute;
+  width: 261px;
+  height: 40px;
+  top: 5px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.186);
+  border-bottom: none;
+  padding-left: 10px;
+  font-size: 20px;
+}
+
+#not-kaydet {
+  font-family: "San Francisco";
+  position: absolute;
+  top: 38px;
+  font-size: 17px;
+  color: #eea13c;
+  right: 13px; 
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#not-day {
+  font-size: 13px;
+  position: absolute;
+  color: rgb(5, 5, 5);
+  margin-left: 38px;
+  margin-top: 24px;
+}
+
+#not-saat {
+  position: absolute;
+  color: rgb(5, 5, 5);
+  margin-left: 0px;
+  font-size: 13px;
+  margin-top: 24px;
+}
+
+#not-goster-container {
+  position: absolute;
+  display: none;
+  background: white;
+  width: 261px;
+  height: 563px;
+  top: 0px;
+  left: 0px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  overflow: scroll;
+}
+
+#not-goster-content {
+  position: absolute;
+  width: 261px;
+  height: 563px;
+  top: 80px;
+  left: 0px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: scroll;
+  background: rgb(209, 202, 202);
+}
+
+#not-goster-baslik {
+  position: absolute;
+  font-size: 25px;
+  margin-left: 13px;
+  margin-top: 8px;
+  font-weight: bold;
+  color: black;
 }
