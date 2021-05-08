@@ -274,18 +274,21 @@ $(".duvarKagidiContainer").click(function(){
     });
   });
   
-   $(document).ready(function(){
     $(".backButton").click(function(){
     $(".notContainer").fadeOut(400);
     $(".digital-clock").css({"color": "white"})
     $(".notApp").fadeOut(400);
-    $(".takvimContainer").fadeOut(400);
-    $(".calendar").fadeOut(400);
     $(".saatContainer").fadeOut(400);
     $(".geriTusu").css({"background-color": "rgba(255, 255, 255, 0.686)"})
     });
-  });
-  
+
+$(".backButton-takvim").click(function(){
+    $(".takvimContainer").fadeOut(400);
+    $(".calendar").fadeOut(400);
+    $(".geriTusu").css({"background-color": "rgba(255, 255, 255, 0.686)"})
+    $(".digital-clock").css({"color": "white"})
+});
+    
   $(document).ready(function(){
     $(".bildirimPanelKapat").click(function(){
       $(".bildirimPaneli").slideUp();
@@ -463,7 +466,9 @@ $("#planeIcon").toggle(function(){
 
 $(".sohbet1").click(function(){
   $(".sohbet1message").fadeIn(250);
-
+  $(".sonGorulme1-message").delay(500).fadeOut(100, function(){
+    $(this).html("çevrimiçi").fadeIn(400);
+  });
 });
 
 $(".message-left-arrow").click(function(){
@@ -520,33 +525,42 @@ $("#not-kaydet").click(function(){
   $("#not-textarea-container input").val("");
 });
 
-function notGoster(){
- // global değişken olayını yapamadık. Notlar ekleniyor çalışıyor fakat editlemeye girilmiyo. 
-$("#not-goster-container").fadeIn(100);
-$(".backButton").fadeOut(100);
-$(".backButton-not").fadeIn(100);
-
-
-
-}
-$("#not-1").on("click", notGoster)
-
 function msgGonder() {
   var mesaj = $(".sohbet1-input").val();
 
   if (mesaj == ""){
   } 
-  else if (mesaj == "/k") {
-    $("#msg").append("<li class='gelen-mesaj'> <span id='gelen-msg-text'>"+ "Taramala beyni beyni" +"</span> <span id='gelen-msg-saat'>15:09</span> </li>");
-  }  
-
   else if (mesaj == "/clear") {
     $("#msg").empty();
   }
 
+  else if (mesaj == "sa" || mesaj == "sea" || mesaj == "selamün aleyküm" || mesaj == "selam" || mesaj == "slm"){
+    $("#msg").append("<li class='giden-mesaj'> <span id='giden-msg-text'>"+ mesaj +"</span> <span id='giden-msg-saat'>15:09</span></li>").delay(1000).queue(function(next1){
+      $("#msg").append("<li class='gelen-mesaj'> <span id='gelen-msg-text'>"+ "Aleyküm selam gardaş" +"</span> <span id='gelen-msg-saat'>15:09</span> </li>");
+      next1();
+      $('.sohbet1-message-content').stop().animate ({
+        scrollTop: $('.sohbet1-message-content')[0].scrollHeight
+      });
+    });
+   
+  }
+  else if (mesaj == "naber" || mesaj == "nbr" || mesaj == "nabıyon" || mesaj == "napıyosun" || mesaj == "nasılsın"){
+    $("#msg").append("<li class='giden-mesaj'> <span id='giden-msg-text'>"+ mesaj +"</span> <span id='giden-msg-saat'>15:09</span></li>").delay(1000).queue(function(next2){
+      $("#msg").append("<li class='gelen-mesaj'> <span id='gelen-msg-text'>"+ "İyi gardaş seni sormalı?" +"</span> <span id='gelen-msg-saat'>15:09</span> </li>");
+      next2();
+      $('.sohbet1-message-content').stop().animate ({
+        scrollTop: $('.sohbet1-message-content')[0].scrollHeight
+      });
+    });
+  }
+
   else {
 
-  $("#msg").append("<li class='giden-mesaj'> <span id='giden-msg-text'>"+ mesaj +"</span> <span id='giden-msg-saat'>15:09</span>   </li>");
+  $("#msg").append("<li class='giden-mesaj'> <span id='giden-msg-text'>"+ mesaj +"</span> <span id='giden-msg-saat'>15:09</span></li>");
+  
+  $('.sohbet1-message-content').stop ().animate ({
+    scrollTop: $('.sohbet1-message-content')[0].scrollHeight
+  });
 
   if ($(".sonMesajSohbet1").html(mesaj.length > 13)) {
     $(".sonMesajSohbet1").html(mesaj + "...");
@@ -558,6 +572,13 @@ function msgGonder() {
   }
 }
 $(".message-gonder").on("click", msgGonder)
+$(".sohbet1-input").on("keydown", function(e){
+  var key = e.which;
+  if(key == 13) {
+    msgGonder();
+    $(".sohbet1-message-input input").val("");
+  }
+});
 $(".message-gonder").click(function(){
   $(".sohbet1-message-input input").val("");
 });
