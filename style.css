@@ -1126,6 +1126,44 @@
       transition:.2s ease;
     }
 
+    span.backButton-takvim {
+      width: 18px;
+      height: 18px;
+      box-sizing: border-box;
+      position: absolute;
+      left: 13px;
+      top: 40px;
+      transform: rotate(-135deg);
+      z-index: 19;
+      cursor: pointer;
+    }
+      .backButton-takvim::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        border-width: .8vmin .8vmin 0 0;
+        border-style: solid;
+        border-color: #eea13c;
+        transition: .2s ease;
+        display: block;
+        transform-origin: 100% 0;
+      }
+    
+      
+      .backButton-takvim::after {
+        content: '';
+        float: left;
+        position: relative;
+        top: -100%;
+        width: 100%;
+        height: 100%;
+        border-width: 0 .8vmin 0 0;
+        border-style: solid;
+        border-color: #eea13c;
+        transform-origin: 100% 0;
+        transition:.2s ease;
+      }
+
     span.backButton-not {
       width: 18px;
       height: 18px;
@@ -4957,7 +4995,7 @@ canvas {
 #not-goster-container {
   position: absolute;
   display: none;
-  background: white;
+  background: rgb(220, 34, 34);
   width: 261px;
   height: 563px;
   top: 0px;
