@@ -17,6 +17,7 @@ $(document).ready(function(){
         $(".lockImage").hide(),
         $(".toplamKodSatiri").hide(),
         $(".ayarlarContainer").fadeOut(400),
+        $(".weather-app").hide(),
         $(".tarih").hide(),
         $(".messageContainer").hide(),
         $(".takvimContainer").hide(),
