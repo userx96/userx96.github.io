@@ -408,8 +408,7 @@ $(".harita").click(function(){
 });
 
 $(".havaDurumu").click(function(){
-  $(".demoPopup").fadeIn(400);
-  $(".anaMenuContainer").css({"filter":"brightness(40%)"});
+    $(".weather-app").fadeIn(400);
 });
 
 $(".music").click(function(){
@@ -526,7 +525,7 @@ $("#not-kaydet").click(function(){
 });
 
 function msgGonder() {
-  var mesaj = $(".sohbet1-input").val();
+  var mesaj = $(".sohbet1-input").val().toLowerCase();
 
   if (mesaj == ""){
   } 
@@ -535,7 +534,7 @@ function msgGonder() {
   }
 
   else if (mesaj == "sa" || mesaj == "sea" || mesaj == "selamün aleyküm" || mesaj == "selam" || mesaj == "slm"){
-    $("#msg").append("<li class='giden-mesaj'> <span id='giden-msg-text'>"+ mesaj +"</span> <span id='giden-msg-saat'>15:09</span></li>").delay(1000).queue(function(next1){
+    $("#msg").append("<li class='giden-mesaj'> <span id='giden-msg-text'>"+ mesaj +"</span> <span id='giden-msg-saat'>15:09</span><span id='okunmadi'></span><span id='okundu'></span> </li>").delay(1000).queue(function(next1){
       $("#msg").append("<li class='gelen-mesaj'> <span id='gelen-msg-text'>"+ "Aleyküm selam gardaş" +"</span> <span id='gelen-msg-saat'>15:09</span> </li>");
       next1();
       $('.sohbet1-message-content').stop().animate ({
@@ -545,7 +544,7 @@ function msgGonder() {
    
   }
   else if (mesaj == "naber" || mesaj == "nbr" || mesaj == "nabıyon" || mesaj == "napıyosun" || mesaj == "nasılsın"){
-    $("#msg").append("<li class='giden-mesaj'> <span id='giden-msg-text'>"+ mesaj +"</span> <span id='giden-msg-saat'>15:09</span></li>").delay(1000).queue(function(next2){
+    $("#msg").append("<li class='giden-mesaj'> <span id='giden-msg-text'>"+ mesaj +"</span> <span id='giden-msg-saat'>15:09</span><span id='okunmadi'></span><span id='okundu'></span></li>").delay(1000).queue(function(next2){
       $("#msg").append("<li class='gelen-mesaj'> <span id='gelen-msg-text'>"+ "İyi gardaş seni sormalı?" +"</span> <span id='gelen-msg-saat'>15:09</span> </li>");
       next2();
       $('.sohbet1-message-content').stop().animate ({
@@ -556,7 +555,7 @@ function msgGonder() {
 
   else {
 
-  $("#msg").append("<li class='giden-mesaj'> <span id='giden-msg-text'>"+ mesaj +"</span> <span id='giden-msg-saat'>15:09</span></li>");
+  $("#msg").append("<li class='giden-mesaj'> <span id='giden-msg-text'>"+ mesaj +"</span> <span id='giden-msg-saat'>15:09</span><span id='okunmadi'></span><span id='okundu'></span></li>");
   
   $('.sohbet1-message-content').stop ().animate ({
     scrollTop: $('.sohbet1-message-content')[0].scrollHeight
@@ -577,6 +576,8 @@ $(".sohbet1-input").on("keydown", function(e){
   if(key == 13) {
     msgGonder();
     $(".sohbet1-message-input input").val("");
+    $("#okunmadi").fadeOut(100);
+    $("#okundu").fadeIn(120);
   }
 });
 $(".message-gonder").click(function(){
@@ -1726,6 +1727,69 @@ $("#wallpaper-ok").on("click", customWallpaper)
   clock();
   var iWatch = new iWatch();
 
-  //Launcher Javascript
+ // Weather App
+ 
+ const weather_url = 'https://api.openweathermap.org/data/2.5/';
+ const weather_key = '3bee6d255302f5e7686fd0229333e471';
 
-  
+ const CityQuery = (e) => { 
+    if (e.keyCode == "13"){
+      CityResult(weather_input.value);
+    }
+ }
+
+ const CityResult = (cityName) => {
+    let query = `${weather_url}weather?q=${cityName}&appid=${weather_key}&units=metric&lang=tr`
+    fetch(query)
+    .then(weather => {
+      return weather.json()
+    })
+    .then(displayResult)
+ }
+
+const displayResult = (result) => {
+  let city = document.getElementById("weather-city");
+  city.innerText = `${result.name}, ${result.sys.country}`
+
+  let temp = document.getElementById("weather-celcius");
+  temp.innerText = `${Math.round(result.main.temp)}°C`
+
+  let info = document.getElementById("weather-info");
+  info.innerText = result.weather[0].description
+
+  if (result.weather[0].description === "parçalı bulutlu"){
+    $(info).css({
+      "left": "70px"
+    })
+  } 
+  else if (result.weather[0].description === "az bulutlu"){
+    $(info).css({
+      "left": "90px"
+    })
+  }
+  else if (result.weather[0].description === "hafif yağmur"){
+    $(info).css({
+      "left": "80px"
+    })
+  }
+  else if (result.weather[0].description === "orta şiddetli yağmur"){
+    $(info).css({
+      "left": "50px"
+    })
+  }
+  else if (result.weather[0].description === "parçalı az bulutlu"){
+    $(info).css({
+      "left": "60px"
+    })
+  }
+  else {
+    $(info).css({
+      "left": "110px"
+    })
+  }
+
+}
+
+ const weather_input = document.getElementById("weather-input");
+ weather_input.addEventListener("keypress", CityQuery);
+ 
