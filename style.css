@@ -638,8 +638,8 @@
     background-image: url('https://cdn.freebiesupply.com/logos/large/2x/weather-ios-logo-png-transparent.png');
     background-size: cover;
     opacity: 1;
-    top: 148px;
-    left: 198px;
+    top: 150px;
+    left: 136px;
     z-index: 3;
     border-radius: 10px;
   }
@@ -3649,15 +3649,14 @@ canvas {
 .giden-mesaj {
   position: relative;
   max-width: 150px;
-  min-width: 60px ;
   width: auto;
   min-height: 40px;
   right: -60px;
   top: 15px;
-  background: rgb( 75, 126, 121);
+  background: rgb(3, 41, 58);
   border-radius: 9px;
   margin-bottom: 10px;
-  color: rgb(226, 226, 226);
+  color: rgb(206, 203, 203);
   text-align: left;
   white-space: initial;
   word-break: break-word;
@@ -3670,7 +3669,7 @@ canvas {
   height: 20px;
   right: -10px;
   top: 0px;
-  background: rgb( 75, 126, 121);
+  background: rgb(3, 37, 53);
   border-bottom-right-radius: 90px;
   z-index: -2;
 }  
@@ -3686,7 +3685,31 @@ canvas {
 #giden-msg-saat {
   position: relative;
   font-size: 12px;
-  padding-left: 110px;
+  padding-left: 85px;
+  color: rgb(182, 181, 181);
+}
+
+#okundu {
+  position: absolute;
+  display: none;
+  width: 18px;
+  height: 18px;
+  right: 7px;
+  bottom: 1px;
+  background-image: url("https://cdn.discordapp.com/attachments/814390462021894204/841324657642831872/okundu.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#okunmadi {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  right: 4px;
+  bottom: 1px;
+  background-image: url("https://cdn.discordapp.com/attachments/814390462021894204/841325806130561034/okunmadi.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 #gelen-msg-saat {
@@ -5026,4 +5049,89 @@ canvas {
   margin-top: 8px;
   font-weight: bold;
   color: black;
+}
+
+.weather-app {
+  position: absolute;
+  display: none;
+  width: 261px;
+  height: 563px;
+  background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/disp/15549a14589707.5628669c64769.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 8;
+  left: 74px;
+  top: 17px;
+  opacity: 10.7;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-top-left-radius: 27px;
+  border-top-right-radius: 27px;
+  text-align: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#weather-header {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  left: 55px;
+  top: 50px;
+  font-size: 22px;
+  font-family: "montserrat", sans-serif;
+  text-shadow: 1px 3px black;
+  white-space: nowrap;
+}
+
+#weather-input::placeholder{
+  color: white;
+  font-family: "montserrat", sans-serif;
+}
+
+#weather-input {
+  position: absolute;
+  background: transparent;
+  left: 30px;
+  top: 100px;
+  color: white;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.405);
+  outline: none;
+  text-align: center;
+  width: 206px;
+  font-size: 20px;
+}
+
+#weather-city {
+  position: relative;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  justify-content: center;
+  top: 160px;
+  font-size: 22px;
+  font-family: "montserrat", sans-serif;
+  text-shadow: 1px 3px black;
+  white-space: nowrap;
+}
+
+#weather-celcius {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  left: 65px;
+  top: 200px;
+  font-size: 61px;
+  font-family: "montserrat", sans-serif;
+  text-shadow: 1px 3px black;
+  white-space: nowrap;
+}
+
+#weather-info {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  left:110px;
+  top: 300px;
+  font-size: 17px;
+  font-family: "montserrat", sans-serif;
+  text-shadow: 1px 3px black;
+  white-space: nowrap;
 }
