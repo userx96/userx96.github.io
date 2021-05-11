@@ -340,6 +340,7 @@ $(".backButton-takvim").click(function(){
     $(".whatsappContainer").fadeOut(400);
     $(".ayarlarContainer").fadeOut(400);
     $(".instaContainer").fadeOut(400);
+    $(".weather-app").fadeOut(400);
     });
   });
   
