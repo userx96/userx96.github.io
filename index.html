@@ -49,7 +49,7 @@
           class='red-dot2'></span>
       </span>
       <span class="tarih"></span>
-      <span class="toplamKodSatiri">Bu Projedeki <br> Toplam kod satırı: <b>7405</b></span>
+      <span class="toplamKodSatiri">Bu Projedeki <br> Toplam kod satırı: <b>7585</b></span>
       <span class="userx-phone">USERX</span>
       <span class='digital-clock'>
         <span class='hour'></span><span class='red-dot'>:</span><span class='min'></span><span class='red-dot'></span>
@@ -192,15 +192,17 @@
 
             <ol id="msg">
 
-              <!-- <li class="giden-mesaj"> 
+               <li class="giden-mesaj"> 
               <span id="giden-msg-text">Bu bir deneme mesajıdır giden mesaj</span>
-              <span id="giden-msg-saat">15:09</span>  
+              <span id="giden-msg-saat">15:09</span>
+              <span id="okunmadi"></span>
+              <span id="okundu"></span>  
             </li>
 
               <li class="gelen-mesaj"> 
                 <span id="gelen-msg-text"> Bu da gelen mesajdır</span>
-                <span id="gelen-msg-saat">15:09</span>  
-              </li> -->
+                <span id="gelen-msg-saat">15:09</span>   
+              </li> 
 
             </ol>
 
@@ -558,6 +560,14 @@
 
       </div>
 
+      <div class="weather-app">
+        <span id="weather-header">Hava Durumu</span> 
+        <input type="text" placeholder="Şehir Girin..." id="weather-input">
+        <span id="weather-city"></span>
+        <span id="weather-celcius"></span> 
+        <span id="weather-info"></span>
+      </div>
+
 
       <div class="hesap">
         <div class="cal-container">
@@ -619,7 +629,7 @@
         <span class="whatsappIcon"> <span class="whatsappText">WhatsApp</span></span>
         <span class="clockIcon"> <span class="clockText"> Saat</span> </span>
         <!-- <span class="harita"> <span class="haritaText">Harita</span></span> -->
-        <!-- <span class="havaDurumu"> <span class="havaText">Hava Durumu</span></span> -->
+        <span class="havaDurumu"> <span class="havaText">Hava Durumu</span></span> 
         <span class="hesapMakinesi"> <span class="hesapText">Hesap Makinesi</span> </span>
         <span class="notlar"><span class="notlarText">Notlar</span></span>
         <!-- <span class="music"> <span class="musicText">Müzik</span></span>
@@ -632,10 +642,7 @@
     </div>
   </div>
 
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="js/moment.js"></script>
+
 
   <!-- Template Main Javascript File -->
   <script src="/main.js"></script>
