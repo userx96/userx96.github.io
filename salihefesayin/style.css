@@ -1,0 +1,365 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    user-select: none;
+}
+
+#wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('assets/carbon.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+#main-container {
+    position: relative;
+    width: 95%;
+    height: 95%;
+    background: rgb(0, 0, 0);
+    box-shadow: 4px 4px 10px black;
+    overflow: hidden;
+}
+
+#first-background-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/911back.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#home-container {
+    display:none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgb(34, 34, 38);
+    background-image: url('assets/home.jpg');
+    background-position: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#userx{
+    position: absolute;
+    font-size: 1.5vw;
+    color: white;
+    font-family: "oswald";
+    text-shadow: 2px 3px 10px rgba(255, 255, 255, 0.85);
+    bottom: 0%;
+}
+
+#start-btn {
+    position: absolute;
+    top: 45%;
+    left: 4%;
+    width: 10%;
+    height: 10%;
+    border: 0 solid;
+    box-shadow: inset 0 0 2vw rgba(255, 255, 255, 0);
+    outline: 0.2vw solid;
+    outline-color: rgba(196, 196, 196, 0);
+    outline-offset: 0px;
+    -webkit-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    outline-color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    padding-top: 1%;
+    text-shadow: 2px 3px 10px rgba(255, 255, 255, 0.85);
+    color: white;
+    font-family: "Oswald";
+    font-size: 1.7vw;
+} 
+            
+#start-btn:hover{
+    border: 0.2vw solid rgb(255, 255, 255);
+    box-shadow: inset 0 0 2vw rgba(255, 255, 255, 0.5), 0 0 2vw rgba(255, 255, 255, 0.2);
+    outline-offset: 1vw;
+    outline-color: rgba(255, 255, 255, 0);
+    text-shadow: 1vw 1vw 2vw #427388;
+}
+
+#tutorial-btn {
+    position: absolute;
+    top: 64%;
+    left: 4%;
+    width: 10%;
+    height: 10%;
+    border: 0 solid;
+    box-shadow: inset 0 0 2vw rgba(255, 255, 255, 0);
+    outline: 0.2vw solid;
+    outline-color: rgba(196, 196, 196, 0);
+    outline-offset: 0px;
+    text-shadow: none;
+    -webkit-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    outline-color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    padding-top: 1%;
+    text-shadow: 2px 3px 10px rgba(255, 255, 255, 0.85);
+    color: white;
+    font-family: "Oswald";
+    font-size: 1.7vw;
+} 
+            
+#tutorial-btn:hover{
+    border: 0.2vw solid rgb(255, 255, 255);
+    box-shadow: inset 0 0 2vw rgba(255, 255, 255, 0.5), 0 0 2vw rgba(255, 255, 255, 0.2);
+    outline-offset: 1vw;
+    outline-color: rgba(255, 255, 255, 0);
+    text-shadow: 1vw 1vw 2vw #427388;
+}
+
+#game-container{
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgb(0, 0, 0);
+    text-align: center;
+    color: white;
+    font-size: 5vw;
+    font-family: "oswald";
+} 
+
+#game-text {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 5vw;
+    font-family: "oswald";
+}
+
+#tutorial-container{
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgb(12, 1, 51);
+    text-align: center;
+} 
+
+#tutorial-text {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 1.8vw;
+    font-family: "oswald";
+    text-shadow: 2px 3px 10px rgba(255, 255, 255, 0.85);
+}
+
+#top-line {
+    position: absolute;
+    width: 100%;
+    height: 5%;
+    top: 5%;
+    left: 0%;
+    background: orange;
+}
+
+#tt-exit {
+    position: absolute;
+    left: 2%;
+    top: 13%;
+    width: 5%;
+    height: 8%;
+    background-image: url("assets/exit.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 3;
+    filter: invert(1);
+    cursor: pointer;
+    z-index: 99;
+}
+
+#day1-container {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgb(8,11,62);
+}
+
+#alarm-pause {
+    position: absolute;
+    top: 34%;
+    left: 40%;
+    width: 20%;
+    height: 10%;
+    border: 0 solid;
+    box-shadow: inset 0 0 2vw rgba(255, 255, 255, 0);
+    outline: 0.2vw solid;
+    outline-color: rgba(196, 196, 196, 0);
+    outline-offset: 0px;
+    text-shadow: none;
+    -webkit-transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+    outline-color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    padding-top: 1%;
+    text-shadow: 2px 3px 10px rgba(255, 255, 255, 0.85);
+    color: white;
+    font-family: "Oswald";
+    font-size: 1.7vw;
+}
+
+#alarm-pause:hover {
+    border: 0.2vw solid rgb(243, 185, 76);
+    box-shadow: inset 0 0 2vw rgba(255, 184, 4, 0.631), 0 0 2vw rgba(255, 255, 255, 0.2);
+    outline-offset: 1vw;
+    outline-color: rgba(255, 255, 255, 0);
+    text-shadow: 1vw 1vw 2vw #427388;
+}
+
+#black-effect {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgb(0, 0, 0);
+    text-align: center;
+    padding-top: 20%;
+    color: white;
+    font-size: 2.5vw;
+    font-family: 'Oswald', sans-serif;
+    text-shadow: 2px 3px 10px rgba(255, 255, 255, 0.85);
+}
+
+#day1-main {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgb(21, 21, 67);
+}
+
+#date {
+    position: absolute;
+    height: 10%;
+    width: 30%;
+    text-align: left;
+    margin: 1% 1%;
+    color: white;
+    font-size: 1.8vw;
+    font-family: 'Oswald', sans-serif;
+    text-shadow: 2px 3px 10px rgba(255, 255, 255, 0.85);
+}
+
+#clock {
+    position: absolute;
+    height: 10%;
+    width: 10%;
+    text-align: left;
+    margin: 4% 1%;
+    color: white;
+    font-size: 1.8vw;
+    font-family: 'Oswald', sans-serif;
+    text-shadow: 2px 3px 10px rgba(255, 255, 255, 0.85);
+}
+
+#clock-2 {
+    position: absolute;
+    height: 10%;
+    width: 10%;
+    text-align: left;
+    margin: 4% 1%;
+    color: white;
+    font-size: 1.8vw;
+    font-family: 'Oswald', sans-serif;
+    text-shadow: 2px 3px 10px rgba(255, 255, 255, 0.85);
+}
+
+#question {
+    position: absolute;
+    height: 12%;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 3.5vw;
+    top: 30%;
+    font-family: 'Oswald', sans-serif;
+    text-shadow: 2px 3px 10px rgba(255, 255, 255, 0.85);
+}
+
+#answer {
+    position: absolute;
+    height: 8%;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 2vw;
+    top: 50%;
+    font-family: 'Oswald', sans-serif;
+    text-shadow: 2px 3px 10px rgba(255, 255, 255, 0.85);
+    text-decoration: underline;
+}
+
+#day1-second {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgb(21, 21, 67);
+}
+
+#question-2 {
+    position: absolute;
+    height: 12%;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 3.5vw;
+    top: 30%;
+    font-family: 'Oswald', sans-serif;
+    text-shadow: 2px 3px 10px rgba(255, 255, 255, 0.85);
+    z-index: 1;
+}
+
+#answer-2 {
+    position: absolute;
+    height: 8%;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 2vw;
+    top: 50%;
+    left: -2%;
+    font-family: 'Oswald', sans-serif;
+    text-shadow: 2px 3px 10px rgba(255, 255, 255, 0.85);
+    text-decoration: underline;
+}
+
+#chief {
+    position: absolute;
+    left: 0.2%;
+    bottom: 10%;
+    width: 30%;
+    height: 50%;
+    background-image: url("assets/chief.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: none;
+}
