@@ -1,0 +1,702 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#loading-container {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgb(32, 32, 31);
+}
+
+#loader {
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #3498db;
+
+  -webkit-animation: spin 2s linear infinite;
+  /* Chrome, Opera 15+, Safari 5+ */
+  animation: spin 2s linear infinite;
+  /* Chrome, Firefox 16+, IE 10+, Opera */
+
+  z-index: 1001;
+}
+
+#loader:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #e74c3c;
+
+  -webkit-animation: spin 3s linear infinite;
+  /* Chrome, Opera 15+, Safari 5+ */
+  animation: spin 3s linear infinite;
+  /* Chrome, Firefox 16+, IE 10+, Opera */
+}
+
+#loader:after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #f9c922;
+
+  -webkit-animation: spin 1.5s linear infinite;
+  /* Chrome, Opera 15+, Safari 5+ */
+  animation: spin 1.5s linear infinite;
+  /* Chrome, Firefox 16+, IE 10+, Opera */
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(0deg);
+    /* IE 9 */
+    transform: rotate(0deg);
+    /* Firefox 16+, IE 10+, Opera */
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(360deg);
+    /* IE 9 */
+    transform: rotate(360deg);
+    /* Firefox 16+, IE 10+, Opera */
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(0deg);
+    /* IE 9 */
+    transform: rotate(0deg);
+    /* Firefox 16+, IE 10+, Opera */
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: rotate(360deg);
+    /* IE 9 */
+    transform: rotate(360deg);
+    /* Firefox 16+, IE 10+, Opera */
+  }
+}
+
+#loader-wrapper .loader-section {
+  position: fixed;
+  top: 0;
+  width: 51%;
+  height: 100%;
+  background: #222222;
+  z-index: 1000;
+  -webkit-transform: translateX(0);
+  /* Chrome, Opera 15+, Safari 3.1+ */
+  -ms-transform: translateX(0);
+  /* IE 9 */
+  transform: translateX(0);
+  /* Firefox 16+, IE 10+, Opera */
+}
+
+#loader-wrapper .loader-section.section-left {
+  left: 0;
+}
+
+#loader-wrapper .loader-section.section-right {
+  right: 0;
+}
+
+/* Loaded */
+.loaded #loader-wrapper .loader-section.section-left {
+  -webkit-transform: translateX(-100%);
+  /* Chrome, Opera 15+, Safari 3.1+ */
+  -ms-transform: translateX(-100%);
+  /* IE 9 */
+  transform: translateX(-100%);
+  /* Firefox 16+, IE 10+, Opera */
+
+  -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.loaded #loader-wrapper .loader-section.section-right {
+  -webkit-transform: translateX(100%);
+  /* Chrome, Opera 15+, Safari 3.1+ */
+  -ms-transform: translateX(100%);
+  /* IE 9 */
+  transform: translateX(100%);
+  /* Firefox 16+, IE 10+, Opera */
+
+  -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.loaded #loader {
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+.loaded #loader-wrapper {
+  visibility: hidden;
+
+  -webkit-transform: translateY(-100%);
+  /* Chrome, Opera 15+, Safari 3.1+ */
+  -ms-transform: translateY(-100%);
+  /* IE 9 */
+  transform: translateY(-100%);
+  /* Firefox 16+, IE 10+, Opera */
+
+  -webkit-transition: all 0.3s 1s ease-out;
+  transition: all 0.3s 1s ease-out;
+}
+
+.no-js #loader-wrapper {
+  display: none;
+}
+
+.no-js h1 {
+  color: #222222;
+}
+
+#wrapper {
+  width: 100%;
+  height: 150%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#main-background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url("file/img/bg-ais.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#top-side {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  height: 10%;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 9%,
+    rgba(94, 94, 94, 1) 97%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: row;
+}
+
+#top-logo {
+  position: absolute;
+  width: 30%;
+  height: 80%;
+  background-image: url("file/img/logo-yatay.png");
+  background-repeat: no-repeat;
+  background-size: 140%;
+  background-position: center;
+  cursor: pointer;
+}
+
+#sisteme-giris {
+  position: absolute;
+  width: 15%;
+  height: 80%;
+  right: 0%;
+  background-image: url("file/img/sisteme-giris-button.png");
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: center;
+  cursor: pointer;
+}
+
+#sisteme-giris:hover {
+  top: 3%;
+}
+
+#content-side {
+  position: absolute;
+  width: 100%;
+  height: 140%;
+  bottom: -50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#content-mid {
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  background: rgba(242, 195, 23, 0.538);
+  top: 0.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#content-bottom {
+  position: absolute;
+  width: 100%;
+  height: 37%;
+  bottom: 0.5%;
+}
+
+#bottom-first {
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  background: #ffffff66;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#bottom-second {
+  position: absolute;
+  width: 100%;
+  height: 34%;
+  background: #ffffff66;
+  top: 44%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#footer {
+  position: absolute;
+  width: 100%;
+  height: 19%;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 1) 9%, rgb(57, 57, 57) 97%);
+  bottom: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#osym-ara {
+  position: absolute;
+  width: 20%;
+  height: 80%;
+  left: 1%;
+  background-image: url("file/img/alo-osym.png");
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: left;
+  text-align: center;
+}
+
+#haklar {
+  position: absolute;
+  right: 2%;
+  color: white;
+  font-size: 1vw;
+}
+
+#first-header {
+  position: absolute;
+  font-size: 1.1vw;
+  left: 3%;
+  top: 10%;
+  font-weight: bold;
+  color: #3c3636;
+}
+
+#first-one,
+#first-two,
+#first-tree {
+  font-size: 0.8vw;
+  position: absolute;
+  left: 3%;
+}
+
+#first-one {
+  top: 35%;
+}
+
+#first-two {
+  top: 55%;
+}
+
+#first-tree {
+  top: 75%;
+}
+
+#second-header {
+  position: absolute;
+  font-size: 1.1vw;
+  left: 3%;
+  top: 25%;
+  font-weight: bold;
+  color: #3c3636;
+}
+
+#second-first {
+  top: 55%;
+  font-size: 0.8vw;
+  position: absolute;
+  left: 3%;
+}
+
+#googleplay {
+  position: absolute;
+  width: 15%;
+  height: 80%;
+  right: 2%;
+  background-image: url("file/img/googleplay.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+}
+
+#appstore {
+  position: absolute;
+  width: 15%;
+  height: 80%;
+  right: 20%;
+  background-image: url("file/img/appstore.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+}
+
+#googleplay:hover,
+#appstore:hover {
+  top: 5%;
+}
+
+#main-container {
+  position: absolute;
+  width: 80%;
+  height: 95%;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 1.5vw;
+  box-shadow: 0.3vw 0.3vw 1.5vw rgba(0, 0, 0, 0.701);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#welcome {
+  position: absolute;
+  top: 2%;
+  font-size: 2.5vw;
+  color: rgb(38, 36, 35);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#osym-logo {
+  position: absolute;
+  width: 19%;
+  height: 19%;
+  right: 15%;
+  bottom: 5%;
+}
+
+#osym-bina {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background-image: url("file/img/osym-bina.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  left: 2%;
+  top: 20%;
+  box-shadow: 0.1vw 0.1vw 1vw black;
+  border-radius: 1vw;
+}
+
+#content-text {
+  position: absolute;
+  font-size: 1.2vw;
+  top: 23%;
+  left: 53%;
+  line-height: 2vw;
+  font-weight: 500;
+}
+
+#sss-container {
+  position: absolute;
+  width: 70%;
+  height: 120%;
+  background: white;
+  top: 14%;
+  border-radius: 3vw;
+}
+
+#anasayfa-a {
+  position: absolute;
+  left: 2%;
+  font-size: 1.4vw;
+  color: rgba(255, 255, 255, 0.871);
+  text-decoration: none;
+}
+
+#sss-top {
+  position: absolute;
+  width: 100%;
+  height: 14%;
+  border-top-left-radius: 3vw;
+  border-top-right-radius: 3vw;
+  border-bottom: 0.2vw solid rgba(128, 128, 128, 0.381);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(236, 232, 232);
+}
+
+#sss-header {
+  position: absolute;
+  font-size: 3vw;
+  font-weight: bold;
+  color: rgb(38, 36, 35);
+  font-family: 'Hind Madurai', sans-serif;
+}
+
+#sss-main {
+  position: absolute;
+  width: 100%;
+  height: 86%;
+  bottom: 0%;
+  border-bottom-left-radius: 3vw;
+  border-bottom-right-radius: 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sorular {
+  position: absolute;
+  font-size: 1.4vw;
+  font-weight: bold;
+  color: #1d075d;
+  left: 5%;
+}
+
+.cevaplar {
+  position: absolute;
+  font-size: 1.2vw;
+  font-weight: bold;
+  color: #1e1e1e;
+  left: 5%;
+}
+
+#soru-1 {
+  top: 5%;
+}
+
+#soru-2 {
+  top: 14%;
+}
+#soru-3 {
+  top: 23%;
+}
+#soru-4 {
+  top: 35%;
+}
+#soru-5 {
+  top: 44%;
+}
+#soru-6 {
+  top: 53%;
+}
+
+#cevap-1 {
+  top: 9%;
+}
+
+#cevap-2 {
+  top: 18%;
+}
+#cevap-3 {
+  top: 27%;
+}
+#cevap-4 {
+  top: 39%;
+}
+#cevap-5 {
+  top: 48%;
+}
+#cevap-6 {
+  top: 57%;
+}
+
+#sss-logo {
+  position: absolute;
+  bottom: 8%;
+  width: 15%
+}
+
+#osym-sss {
+  font-size: 1.1vw;
+  bottom: 4%;
+  position: absolute;
+}
+
+#login-container {
+  position: relative;
+  width: 70%;
+  height: 55%;
+  background: #ffffff92;
+  border-radius: 1vw;
+}
+
+#login-top {
+  top: 0%;
+  position: absolute;
+  width: 100%;
+  border-top-left-radius: 1vw;
+  border-top-right-radius: 1vw;
+  border-bottom: 0.2vw solid rgba(128, 128, 128, 0.641);
+  height: 20%;
+}
+
+#login-bottom {
+  bottom: 0%;
+  position: absolute;
+  width: 100%;
+  border-bottom-left-radius: 1vw;
+  border-bottom-right-radius: 1vw;
+  height: 40%;
+  border-top: 0.2vw solid rgba(128, 128, 128, 0.641);
+}
+
+#login-main {
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  top: 20%;
+  display: flex;
+  align-items: center;
+}
+
+.input-error {
+  border: 0.1vw solid red;
+}
+
+#tc-input {
+  position: absolute;
+  outline: none;
+  width: 20%;
+  height: 23%;
+  left: 20%;
+  top: 20%;
+  border-radius: 0.5vw;
+  border: 0.1vw solid gray;
+  padding-left: 1%;
+  font-size: 1vw;
+}
+
+#tc-text {
+  position: absolute;
+  left: 9.6%;
+  top: 23%;
+  font-size: 1.2vw;
+}
+
+#sifre-input {
+  position: absolute;
+  outline: none;
+  width: 20%;
+  height: 23%;
+  left: 20%;
+  top: 55%;
+  border-radius: 0.5vw;
+  border: 0.1vw solid gray;
+  padding-left: 1%;
+  font-size: 1vw;
+}
+
+#sifre-text {
+  position: absolute;
+  left: 13.2%;
+  top: 55%;
+  font-size: 1.2vw;
+}
+
+#login-btn {
+  position: absolute;
+  top: 5%;
+  width: 10vw;
+  height: 4vw;
+  left: 20%;
+  border-radius: 0.5vw;
+  border: 0.1vw solid rgb(233, 231, 231);
+  background: black;
+  color: white;
+  font-size: 1.4vw;
+  cursor: pointer;
+}
+
+#login-btn:hover {
+  color: orange;
+}
+
+#yuno, #sifre-unut {
+  text-decoration: none;
+}
+
+#login-yazi {
+  position: absolute;
+  bottom: 15%;
+  font-size: 1.1vw;
+  left: 20%;
+}
+
+#adlar {
+  color: white;
+  position: absolute;
+  left: 2%;
+  font-size: 1.4vw;
+}
