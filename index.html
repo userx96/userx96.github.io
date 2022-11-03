@@ -4,12 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="userx-phone/style.css">
-    <script src="assets/jquery/jquery.min.js"></script>
     <title>UserX</title>
+
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        user-select: none;
+        font-family: 'PT Sans', sans-serif;
+        }
+
+        html, body {
+        height: 100vh;
+        }   
+        #wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }   
+    </style>
 </head>
 <body>
-    <div id="wrapper" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+    <div id="wrapper">
         <div id="background-video-container" style="width: 100%; height: 100%; overflow: hidden;">
             <video src="background-video.mp4" autoplay loop></video>
         </div>
