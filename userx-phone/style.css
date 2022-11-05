@@ -1,0 +1,1608 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+@import url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: 'PT Sans', sans-serif;
+}
+
+html, body {
+    height: 100vh;
+}
+
+.fade-out {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+.fade-in {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+#wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#main-container {
+    position: relative;
+    background-image: url("assets/img/cerceve.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 280px;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 45px;
+}
+
+#on-btn {
+    position: absolute;
+    width: 10px;
+    height: 55px;
+    top: 130px;
+    right: 0px;
+    cursor: pointer;
+    display: none;
+    /* background: red;
+    opacity: 0.7; */
+}
+
+#off-btn {
+    position: absolute;
+    width: 10px;
+    height: 55px;
+    top: 130px;
+    right: 0px;
+    cursor: pointer;
+    /* background: rgb(8, 0, 255);
+    opacity: 0.7; */
+}
+
+#front-cam {
+    position: absolute;
+    width: 140px;
+    height: 24px;
+    background-image: url("assets/img/onkamera.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: -4.5px;   
+    z-index: 5;
+}
+
+#left-navbar {
+    position: absolute;
+    height: 20px;
+    width: 59px;
+    left: 1px;
+    border-top-left-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    opacity: 0.9;
+    z-index: 3;
+}
+
+#right-navbar {
+    position: absolute;
+    height: 20px;
+    width: 59px;
+    right: 1px;
+    border-top-right-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    opacity: 0.9;
+    z-index: 3;
+}
+
+#navbar-clock {
+    color: white;
+    font-size: 0.9em;
+    display: none;
+}
+
+#battery-icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 9px;
+    background-image: url("assets/img/battery.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#signal-icon {
+    position: absolute;
+    width: 12px;
+    height: 10px;;
+    left: 12px;
+    background-image: url("assets/img/signal.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#main-screen {
+    position: absolute;
+    width: 241px;
+    height: 523px;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 19.4px;
+    top: 14.3px;
+}
+
+#on-screens {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+}
+
+#off-screen {
+    position: absolute;
+    background: black;
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    display: none;
+    z-index: 4;
+}
+
+#notification-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 28px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+#brightness-range {
+    position: absolute;
+    left: -20px;
+    top: 100px;
+    appearance: none;
+    width: 125px;
+    height: 40px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.452);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    outline: none;
+    overflow: hidden;
+    transform: rotate(270deg)
+}
+
+#brightness-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 1px; 
+    height: 10px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: -350px 0px 0px 350px rgb(255, 255, 255);
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 50px;
+}
+
+#brightness-icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-image: url("assets/img/brightness-icon.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: invert(1);
+    left: 32.5px;
+    top: 155px;
+}
+
+#volume-range {
+    position: absolute;
+    left: 35px;
+    top: 100px;
+    appearance: none;
+    width: 125px;
+    height: 40px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.452);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    outline: none;
+    overflow: hidden;
+    transform: rotate(270deg)
+}
+
+#volume-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 1px; 
+    height: 10px;
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: -350px 0px 0px 350px rgb(255, 255, 255);
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 50px;
+}
+
+#volume-icon {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-image: url("assets/img/volume-icon.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 90.5px;
+    top: 157px;
+}
+
+#notification-panel {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    background: rgba(0, 0, 0, 0.452);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    right: 5px;
+    top: 65px;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(2, 50px);
+}
+
+.notification-panel-items {
+    position: relative;
+    width: 41px;
+    height: 41px;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 9px 9px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: 25px;
+    background-repeat: no-repeat;
+}
+
+.notification-panel-items:hover {
+    filter: brightness(50%)
+}
+
+#donotdisturb {
+    background-image: url("assets/img/donotdisturb-icon.png");
+}
+
+#bluetooth {
+    background-image: url("assets/img/bluetooth-icon.png");
+}
+
+#lock-screen {
+    position: absolute;
+    background-image: url("assets/img/landscape1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#lock-clock {
+    position: absolute;
+    font-size: 3em;
+    top: 80px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.554);
+}
+
+#lock-icon {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 45px;
+    background-image: url("assets/img/lock.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#lock-date {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1em;
+    top: 145px;
+}
+
+#lock-day {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.06em;
+    top: 171px;
+}
+
+#unlock-text {
+    position: absolute;
+    bottom: 25px;
+    font-size: 14px;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+#unlock-btn {
+    position: absolute;
+    width: 180px;
+    height: 7px;
+    background-color: rgba(255, 255, 255, 0.878);
+    border-radius: 40px;
+    bottom: 7px;
+    cursor: pointer;
+}
+
+#blur-effect {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.27);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: absolute;
+    border-radius: 28px;
+    z-index: 4;
+    display: none;
+}
+
+#menu-screen {
+    position: absolute;
+    background-image: url("assets/img/iPhone-X-Wallpaper-01-1242-x-2208-768x1365-4105387446.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#menu-main-ul {
+    position: absolute;
+    width: 90%;
+    height: 350px;
+    top: 60px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#menu-main-ul li {
+    list-style-type: none;
+    float: left;
+    color: white;
+    font-size: 0.75em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#menu-main-ul li:nth-child(2), #menu-main-ul li:nth-child(3), #menu-main-ul li:nth-child(4) {
+    margin-left: 10px;
+}
+
+#insta-icon {
+    background-image: url("assets/img/instagram.png");
+}
+
+#insta-icon::after {
+    content: "Instagram";
+    position: absolute;
+    bottom: -20px;
+}
+
+#wp-icon {
+    background-image: url("assets/img/wp.png");
+}
+
+#wp-icon::after {
+    content: "WhatsApp";
+    position: absolute;
+    bottom: -20px;
+}
+
+#twitter-icon {
+    background-image: url("assets/img/twitter.png");
+}
+
+#twitter-icon::after {
+    content: "Twitter";
+    position: absolute;
+    bottom: -20px;
+}
+
+#settings-icon {
+    background-image: url("assets/img/settings.png");
+}
+
+#settings-icon::after {
+    content: "Ayarlar";
+    position: absolute;
+    bottom: -20px;
+}
+
+#calculator-icon  {
+    background-image: url("assets/img/calculator.png");
+    top: -70px;
+    margin-left: -4px;
+}
+
+#calculator-icon::after {
+    content: "Hesap Makinesi";
+    position: absolute;
+    bottom: -35px;
+}
+
+#notes-icon  {
+    background-image: url("assets/img/notes.png");
+    top: -70px;
+    margin-left: -4px;
+}
+
+#notes-icon::after {
+    content: "Notlar";
+    position: absolute;
+    bottom: -20px;
+}
+
+#weather-app-icon  {
+    background-image: url("assets/img/weather.png");
+    top: -70px;
+    margin-left: -4px;
+}
+
+#weather-app-icon::after {
+    content: "Hava Durumu";
+    position: absolute;
+    bottom: -35px;
+}
+
+#calendar-icon  {
+    background-image: url("assets/img/calendar.png");
+    top: -70px;
+    margin-left: -4px;
+}
+
+#calendar-icon::after {
+    content: "Takvim";
+    position: absolute;
+    bottom: -20px;
+}
+
+#menu-bottom-panel {
+    position: absolute;
+    width: 215px;
+    height: 70px;
+    bottom: 15px;
+    background: rgba(255, 255, 255, 0.27);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.6px);
+    -webkit-backdrop-filter: blur(8.6px);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#menu-bottom-panel li {
+    list-style-type: none;
+    float: left;
+}
+
+.menu-panel-items {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.menu-panel-items:hover {
+    width: 45px;
+    height: 45px;
+    transition: all 300ms;
+}
+
+#phone-icon {
+    background-image: url("assets/img/phone.png");
+}
+
+#safari-icon {
+    background-image: url("assets/img/safari.png");
+}
+
+#message-icon {
+    background-image: url("assets/img/message.png");
+}
+
+#music-icon {
+    background-image: url("assets/img/music.png");
+}
+
+#calculator-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    background: black;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#calculator-exit-btn, #settings-exit-btn, #notes-exit-btn, #weather-exit-btn, #instagram-exit-btn,
+#whatsapp-exit-btn {
+    position: absolute;
+    width: 120px;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.878);
+    border-radius: 40px;
+    bottom: 7px;
+    cursor: pointer;
+}
+
+#settings-exit-btn,  #notes-exit-btn, #weather-exit-btn {
+    background-color: black !important;
+}
+
+#result-container {
+    position: absolute;
+    width: 100%;
+    height: 65px;
+    top: 125px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.value {
+    font-size: 64px;
+    color: white;
+}
+
+#buttons-container {
+    position: absolute;
+    width: 100%;
+    height: 310px;
+    bottom: 20px;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #333;
+    width: 55px;
+    height: 55px;
+    font-size: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.button.function {
+    color: black;
+    background-color: #a5a5a5;
+}
+
+.button:hover {
+    background-color: rgb(30, 30, 30);
+}
+
+.button.function:hover {
+    background-color: #797979;
+}
+
+.button.operator {
+    background: #f1a33c;
+}
+
+.button.operator:hover {
+    background: #c77c1a;
+}
+
+.button.number-0 {
+    width: 120px;
+    justify-content: flex-start;
+    border-radius: 55px;
+    padding-left: 20px;
+    grid-column: 1 / span 2;
+}
+
+#settings-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    background-color: rgb(235, 234, 237);
+    display: none; 
+    align-items: center;
+    justify-content: center;
+}
+
+#settings-top-side {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(245, 245, 247);
+    top: 0px;
+    font-size: 2em;
+    font-weight: bold;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+#settings-header-text{
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+}
+
+#settings-profile-container {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    background-color: rgb(254, 254, 254);
+    top: 140px;
+    border-top: 1px solid rgb(216, 214, 214);
+    border-bottom: 1px solid rgb(216, 214, 214);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#settings-profile-pp {
+    position: absolute;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background-image: url("assets/img/ahmetkaya.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 8px;
+}
+
+#settings-profile-name {
+    font-size: 20px;
+    margin-left: 35px;
+    width: 140px;
+    text-align: center;
+}
+
+#settings-profile-go, #settings-wallpaper-go, #settings-password-go, #password-create-go {
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    right: 5px;
+    background-image: url("assets/img/arrow.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#settings-profile-edit-container, #settings-wallpaper-edit-container, #settings-password-edit-container, #settings-password-create-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(235, 234, 237);
+    right: -245px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#settings-profile-edit-top-side, #settings-wallpaper-edit-top-side, #settings-password-edit-top-side,
+#settings-password-create-top-side {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(245, 245, 247);
+    top: 0px;
+    font-size: 2em;
+    font-weight: bold;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    text-align: center;
+}
+
+#settings-profile-edit-header-text, #settings-wallpaper-edit-header-text {
+    position: absolute;
+    bottom: 3px;
+    font-size: 25px;
+}
+
+#settings-password-edit-header-text {
+    position: absolute;
+    bottom: 6px;
+    font-size: 21px;
+}
+
+#settings-profile-edit-exit, #settings-wallpaper-edit-exit, #settings-password-edit-exit,
+#settings-password-create-exit {
+    position: absolute;
+    width: 30px;
+    height: 40px;
+    left: 5px;
+    background-image: url("assets/img/backarrow.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#settings-profile-edit-pp {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-image: url("assets/img/ahmetkaya.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    top: 110px;
+}
+
+#settings-profile-edit-name {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    top: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+#settings-profile-edit-pp-change, #settings-profile-edit-name-change {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    top: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(254, 254, 254);
+    border-top: 1px solid rgb(216, 214, 214);
+    border-bottom: 1px solid rgb(216, 214, 214);
+}
+
+#settings-profile-edit-pp-change::after {
+    content: "Resim Değiştir";
+    position: absolute;
+    left: 9px;
+    top: -18px;
+    font-size: 12px;
+}
+
+#settings-profile-edit-name-change::after {
+    content: "İsim Değiştir";
+    position: absolute;
+    left: 9px;
+    top: -18px;
+    font-size: 12px;
+}
+
+#settings-profile-edit-pp-change-input, #settings-profile-edit-name-change-input {
+    position: absolute;
+    left: 5px;
+    outline: none;
+    border: none;
+    height: 100%;
+    padding-left: 3px;
+    font-size: 15px;
+}
+
+#settings-profile-edit-pp-change-done, #settings-profile-edit-name-change-done {
+    position: absolute;
+    right: 4px;
+    font-weight: bold;
+    color: rgb(110, 174, 253);
+    cursor: pointer;
+}
+
+#settings-profile-edit-name-change {
+    top: 350px;
+}
+
+#settings-wallpaper-container {
+    position: absolute;
+    width: 100%;
+    height: 45px;
+    background-color: rgb(254, 254, 254);
+    top: 240px;
+    border-top: 1px solid rgb(216, 214, 214);
+    border-bottom: 1px solid rgb(216, 214, 214);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#settings-wallpaper-icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url("assets/img/wallpaper-icon.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    left: 10px;
+}
+
+#settings-wallpaper-text {
+    font-size: 16px;
+}
+
+#settings-wallpaper-content-container {
+    position: absolute;
+    width: 100%;
+    height: 413px;
+    top: 105px;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2px;
+    padding-left: 6.5px;
+    overflow: scroll;
+}
+
+#settings-wallpaper-content-container::-webkit-scrollbar, #notes-content-container::-webkit-scrollbar {
+    display: none;
+  }
+
+.wallpaper-element {
+    position: relative;
+    width: 70px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 5px black;
+}
+
+.wallpaper-element-image-side {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    height: 130px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.wallpaper-element-bottom-side {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0px;
+    height: 20px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    color:rgb(110, 174, 253);
+    font-weight: bold;
+}
+
+.wallpaper-element-bottom-side:hover {
+    background-color: rgb(208, 208, 208);
+}
+
+#wallpaper-p-1 {
+    background-image: url("assets/img/wallpaper-1.jpg");
+}
+
+#wallpaper-p-2 {
+    background-image: url("assets/img/wallpaper-2.jpg");
+}
+
+#wallpaper-p-3 {
+    background-image: url("assets/img/wallpaper-3.jpg");
+}
+
+#wallpaper-p-4 {
+    background-image: url("assets/img/wallpaper-4.jpg");
+}
+
+#wallpaper-p-5 {
+    background-image: url("assets/img/wallpaper-5.jpg");
+}
+
+#wallpaper-p-6 {
+    background-image: url("assets/img/wallpaper-6.jpg");
+}
+
+#settings-password-container {
+    position: absolute;
+    width: 100%;
+    height: 45px;
+    background-color: rgb(254, 254, 254);
+    top: 290px;
+    border-top: 1px solid rgb(216, 214, 214);
+    border-bottom: 1px solid rgb(216, 214, 214);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#settings-password-icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url("assets/img/touchid.png");
+    background-position: center;
+    background-size: 35.5px;
+    background-repeat: no-repeat;
+    left: 10px;
+}
+
+#settings-password-content-container {
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#password-container {
+    position: absolute;
+    width: 100%;
+    height: 45px;
+    background-color: rgb(254, 254, 254);
+    top: 100px;
+    border-top: 1px solid rgb(216, 214, 214);
+    border-bottom: 1px solid rgb(216, 214, 214);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#password-container::after {
+    content: "PAROLA";
+    position: absolute;
+    color: gray;
+    font-size: 11px;
+    font-weight: bold;
+    top: -18px;
+    left: 10px;
+}
+
+#password-text {
+    position: absolute;
+    left: 10px;
+    font-weight: 600;
+}
+
+.switch {
+    position: absolute;;
+    width: 40px;
+    height: 20px;
+    right: 8px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 1px;
+    bottom: 1.1px;
+    background-color: white;
+    transition: .4s;
+}
+
+#password-checkbox:checked + .slider {
+    background-color: #3af321;
+}
+  
+#password-checkbox:focus + .slider {
+    box-shadow: 0 0 1px #3af321;
+}
+
+#password-checkbox:checked + .slider:before {
+    transform: translateX(21px);
+}
+  
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+
+#touch-id-edit-icon {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background-image: url("assets/img/touch-id.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    top: 10px;
+}
+
+#password-create-container {
+    position: absolute;
+    width: 100%;
+    height: 45px;
+    background-color: rgb(254, 254, 254);
+    top: 100px; /* 150 */
+    border-top: 1px solid rgb(216, 214, 214);
+    border-bottom: 1px solid rgb(216, 214, 214);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#password-create-text {
+    position: absolute;
+    left: 10px;
+    font-weight: 600;
+}
+
+#settings-password-create-container {
+    position: absolute;
+
+}
+
+#notes-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(225, 225, 226);
+}
+
+#notes-top-side {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    top: 0px;
+    font-size: 2em;
+    font-weight: bold;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+#notes-header-text {
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+}
+
+#notes-add-btn {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    font-size: 20px;
+    color: orange;
+    cursor: pointer;
+}
+
+#notes-content-ul li {
+    list-style-type: none;
+}
+
+#notes-content-container {
+    position: absolute;
+    width: 100%;
+    height: 800px;
+    top: 100px;
+    overflow-y: scroll;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+ #notes-content-ul {
+    position: absolute;
+    width: 100%;
+    height: 1500px;
+}
+
+.note-class {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background: white;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(200, 200, 200, 0.357);
+    border-top: 1px solid rgba(200, 200, 200, 0.357);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+} 
+
+.note-title {
+    position: absolute;
+    top: 1px;
+    left: 8px;
+    font-size: 20px;
+}
+
+.note-date {
+    position: absolute;
+    bottom: 1px;
+    left: 9px;
+    font-size: 13px;
+}
+
+.note-go {
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    right: 5px;
+    background-image: url("assets/img/arrow.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.right {
+    right: -245px !important;
+    transition: right 400ms;
+}
+
+.right-fix {
+    right: 0px !important;
+    transition: right 400ms;
+}
+
+#note-element-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(245, 245, 246);
+    right: -245px; /* coni */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#note-element-top-side {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    top: 0px;
+    font-size: 2em;
+    font-weight: bold;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    text-align: center;
+}
+
+#note-element-content-side {
+    position: absolute;
+    width: 100%;
+    height: 420px;
+    top: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.note-element-delete-btn {
+    position: absolute;
+    right: 35px;
+    font-size: 18px;
+    color: red;
+    cursor: pointer;    
+}
+
+#note-element-title {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.394);
+    padding-left: 10px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: rgb(255, 255, 255);
+}
+
+#note-element-content {
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    height: 280px;
+    border: 1px solid gray;
+    background-color: rgb(255, 255, 255);
+    padding-left: 5px;
+    padding-top: 10px;
+    font-size: 16px;
+    resize: none;
+    outline: none;
+    cursor:auto;
+}
+
+/* edit container */
+#notes-edit-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(245, 245, 246);
+    right: -245px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#notes-edit-top-side {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    top: 0px;
+    font-size: 2em;
+    font-weight: bold;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    text-align: center;
+}
+
+#notes-edit-content-side {
+    position: absolute;
+    width: 100%;
+    height: 420px;
+    top: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#notes-edit-back-btn, #note-element-back-btn {
+    position: absolute;
+    width: 30px;
+    height: 40px;
+    left: 5px;
+    background-image: url("assets/img/orangebackarrow.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#notes-edit-header-text, #note-element-header {
+    font-size: 22px;
+}
+
+#notes-edit-add-btn {
+    position: absolute;
+    right: 5px;
+    font-size: 25px;
+    color: orange;
+    cursor: pointer;
+}
+
+#notes-title-edit-input {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    outline: none;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding-left: 10px;
+    font-size: 16px;
+}
+
+#notes-content-edit-input {
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    outline: none;
+    height: 280px;
+    border: none;
+    resize: none;
+    border: 1px solid gray;
+    padding-left: 5px;
+    padding-top: 10px;
+    font-size: 16px;
+}
+
+#weather-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(0,157,255);
+    background: linear-gradient(180deg, rgba(0,157,255,1) 9%, rgba(21,217,213,1) 97%);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#weather-header {
+    position: absolute;
+    top: 90px;
+    font-size: 31px;
+    text-shadow: 1px 3px 5px black;
+    color: white;
+}
+
+#weather-input {
+    position: absolute;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.405);
+    font-size: 18px;
+    top: 180px;
+}
+
+#weather-input::placeholder{
+    color: rgb(255, 255, 255);
+}
+
+#weather-city {
+    position: absolute;
+    font-size: 24px;
+    text-shadow: 1px 3px 15px black;
+}
+
+#weather-celcius {
+    position: absolute;
+    font-size: 24px;
+    text-shadow: 1px 3px 15px black;
+    top: 300px;
+}
+
+#weather-info {
+    position: absolute;
+    top: 350px;
+    font-size: 24px;
+    text-shadow: 1px 3px 15px black;
+}
+
+#weather-icon {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    top: 390px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#instagram-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none; /* coni */
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(7, 7, 7);
+}
+
+#instagram-top-side {
+    position: absolute;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(30, 30, 30);
+    top: 0px;
+}
+
+#insta-header-icon {
+    position: absolute;
+    top: 35px;
+}
+
+#instagram-bottom-side {
+    position: absolute;
+    width: 100%;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(30, 30, 30);
+    bottom: 0px;
+}
+
+#instagram-bottom-side-elements-container {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+#insta-bottom-profile-icon {
+    background-image: url("assets/img/insta-profile-icon.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 29px;
+    height: 29px;
+}
+
+#insta-bottom-home-icon, #insta-bottom-search-icon, 
+#insta-bottom-add-icon, #insta-bottom-heart-icon, #insta-bottom-profile-icon {
+    cursor: pointer;
+}
+
+#instagram-content-side {
+    position: absolute;
+    width: 100%;
+    height: 390px;
+    top: 70px;
+}
+
+#instagram-story-container {
+    position: absolute;
+    max-width: 400%;
+    width: auto;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.instagram-stories {
+    position: relative;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1.8px solid rgb(209, 207, 207);
+    margin-left: 6px;
+    cursor: pointer;
+}
+
+#your-story {
+    border: 2px solid rgb(209, 207, 207);
+}
+
+#your-story::after {
+    content: "+";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: rgb(74, 150, 226);
+    border-radius: 50%;
+    bottom: 0px;
+    right: 0px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#instagram-post-container {
+    position: absolute;
+    width: 100%;
+    height: 330px;
+    border-top: 1px solid red;
+    top: 60px;
+}
+
+#whatsapp-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(3, 13, 3);
+    display: none; /* coni */
+    justify-content: center;
+    align-items: center;
+}
+
+#whasapp-top-side {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 90px;
+    background-color: #062824;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#whatsapp-header-text {
+    position: absolute;
+    left: 10px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.634);
+    font-weight: bold;
+}
