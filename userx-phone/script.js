@@ -693,6 +693,7 @@ rangeInput.addEventListener("mousedown", () => {
     clearInterval(brightness_interval);
   });
 });
+rangeInput.addEventListener("click", brightnessChanger)
 
 // SES FONKSİYONU
 let volume_range = document.getElementById("volume-range");
@@ -713,3 +714,5 @@ volume_range.addEventListener("mousedown", () => {
     clearInterval(volume_interval);
   });
 });
+
+volume_range.addEventListener("click", volumeChanger)
