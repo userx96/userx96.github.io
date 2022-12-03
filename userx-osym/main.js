@@ -5,7 +5,7 @@ $(window).on("load", () => {
 $(document).ready(() => {
 
     $("#top-logo").click(() => {
-        window.location.href = "index.html"
+        window.location.href = "/userx-osym/index.html"
     })
 
     $("#sisteme-giris").click(() => {
