@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="file/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css">
+    <title>ÖSYM Yemek Tercih Sistemi</title>
+    <script src="file/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="loading-container">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+    <div id="wrapper">
+        <div id="main-background"></div>
+        <div id="top-side">
+            <span id="adlar">Ahmet Kaya</span>
+            <span id="top-logo"></span>
+        </div>
+        <div id="yemek-container">
+            <div id="yemek-top-side">
+                <span id="yemek-osym"></span>
+                <p id="yemek-header">YEMEK TERCİH SİSTEMİ</p>
+            </div>
+            <div id="yemek-menu-side">
+                <ul id="menu-ul">
+                    <li class="menu" id="menu-1">
+                        <span id="menu-1-t"></span>
+                    </li>
+                    <li class="menu" id="menu-2">
+                        <span id="menu-2-t"></span>
+                    </li>
+                    <li class="menu" id="menu-3">
+                        <span id="menu-3-t"></span>
+                    </li>
+                    <li class="menu" id="menu-4">
+                        <span id="menu-4-t"></span>
+                    </li>
+                    <li class="menu" id="menu-5">
+                        <span id="menu-5-t"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="yemek-home-container">
+                <ul id="home-ul">
+                    <li class="home" id="iskender">
+                        <input type="number" id="iskender-fiyat" class="fiyat" value="80" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="iskender-text">İskender</p>
+                        <div class="add" id="add-iskender">Sepete Ekle</div>
+                    </li>
+                    <li class="home" id="biftek">
+                        <input type="number" id="biftek-fiyat" class="fiyat" value="55" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="biftek-text">Biftek</p>
+                        <div class="add" id="add-biftek">Sepete Ekle</div>
+                    </li>
+                    <li class="home" id="burger">
+                        <input type="number" id="burger-fiyat" class="fiyat" value="45" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="burger-text">Burger</p>
+                        <div class="add" id="add-burger">Sepete Ekle</div>
+                    </li>
+                    <li class="home" id="pizza">
+                        <input type="number" id="pizza-fiyat" class="fiyat" value="60" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="pizza-text">Pizza</p>
+                        <div class="add" id="add-pizza">Sepete Ekle</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="yemek-anayemek-container">
+                <ul id="anayemek-ul">
+                    <li class="anayemek" id="kofte">
+                        <input type="number" id="kofte-fiyat" class="fiyat" value="55" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="kofte-text">Köfte</p>
+                        <div class="add" id="add-kofte">Sepete Ekle</div>
+                    </li>
+                    <li class="anayemek" id="tantuni">
+                        <input type="number" id="tantuni-fiyat" class="fiyat" value="55" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="tantuni-text">Tantuni</p>
+                        <div class="add" id="add-tantuni">Sepete Ekle</div>
+                    </li>
+                    <li class="anayemek" id="doner">
+                        <input type="number" id="doner-fiyat" class="fiyat" value="30" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="doner-text">Tavuk Döner</p>
+                        <div class="add" id="add-doner">Sepete Ekle</div>
+                    </li>
+                    <li class="anayemek" id="etdoner">
+                        <input type="number" id="etdoner-fiyat" class="fiyat" value="40" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="etdoner-text">Et Döner</p>
+                        <div class="add" id="add-etdoner">Sepete Ekle</div>
+                    </li>
+                    <li class="anayemek" id="kebap">
+                        <input type="number" id="kebap-fiyat" class="fiyat" value="90" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="kebap-text">Kebap</p>
+                        <div class="add" id="add-kebap">Sepete Ekle</div>
+                    </li>
+                    <li class="anayemek" id="lahmacun">
+                        <input type="number" id="lahmacun-fiyat" class="fiyat" value="50" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="lahmacun-text">Lahmacun</p>
+                        <div class="add" id="add-lahmacun">Sepete Ekle</div>
+                    </li>
+                    <li class="anayemek" id="karniyarik">
+                        <input type="number" id="karniyarik-fiyat" class="fiyat" value="60" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="karniyarik-text">Karnıyarık</p>
+                        <div class="add" id="add-karniyarik">Sepete Ekle</div>
+                    </li>
+                    <li class="anayemek" id="cigkofte">
+                        <input type="number" id="cigkofte-fiyat" class="fiyat" value="30" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="cigkofte-text">Çiğ Köfte</p>
+                        <div class="add" id="add-cigkofte">Sepete Ekle</div>
+                    </li>
+                    <li class="anayemek" id="makarna">
+                        <input type="number" id="makarna-fiyat" class="fiyat" value="45" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="makarna-text">Makarna</p>
+                        <div class="add" id="add-makarna">Sepete Ekle</div>
+                    </li>
+                    <li class="anayemek" id="tost">
+                        <input type="number" id="tost-fiyat" class="fiyat" value="25" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="tost-text">Tost</p>
+                        <div class="add" id="add-tost">Sepete Ekle</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="yemek-salata-container">
+                <ul id="salata-ul">
+                    <li class="salata" id="salata-3">
+                        <input type="number" id="salata-3-fiyat" class="fiyat" value="20" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="salata-3-text">Yaz Salatası</p>
+                        <div class="add" id="add-salata-3">Sepete Ekle</div>
+                    </li>
+                    <li class="salata" id="salata-1">
+                        <input type="number" id="salata-1-fiyat" class="fiyat" value="35" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="salata-1-text">Ton Balıklı</p>
+                        <div class="add" id="add-salata-1">Sepete Ekle</div>
+                    </li>
+                    <li class="salata" id="salata-2">
+                        <input type="number" id="salata-2-fiyat" class="fiyat" value="45" readonly></input>
+                        <p class="tl-sembol">₺</p>
+                        <p class="yemek-text" id="salata-2-text">Zengin Salata</p>
+                        <div class="add" id="add-salata-2">Sepete Ekle</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="yemek-icecek-container">
+                <ul id="icecek-ul">
+                    <li class="icecek" id="cola">
+                        <input type="number" id="cola-fiyat" value="10" class="icecek-fiyat" readonly></input>
+                        <p class="icecek-tl-sembol">₺</p>
+                        <p class="icecek-text" id="cola-text">Coca Cola</p>
+                        <div class="add" id="add-cola">Sepete Ekle</div>
+                    </li>
+                    <li class="icecek" id="pepsi">
+                        <input type="number" id="pepsi-fiyat" value="10" class="icecek-fiyat" readonly></input>
+                        <p class="icecek-tl-sembol">₺</p>
+                        <p class="icecek-text" id="pepsi-text">Pepsi</p>
+                        <div class="add" id="add-pepsi">Sepete Ekle</div>
+                    </li>
+                    <li class="icecek" id="fanta">
+                        <input type="number" id="fanta-fiyat" value="10" class="icecek-fiyat" readonly></input>
+                        <p class="icecek-tl-sembol">₺</p>
+                        <p class="icecek-text" id="fanta-text">Fanta</p>
+                        <div class="add" id="add-fanta">Sepete Ekle</div>
+                    </li>
+                    <li class="icecek" id="sprite">
+                        <input type="number" id="sprite-fiyat" value="10" class="icecek-fiyat" readonly></input>
+                        <p class="icecek-tl-sembol">₺</p>
+                        <p class="icecek-text" id="sprite-text">Sprite</p>
+                        <div class="add" id="add-sprite">Sepete Ekle</div>
+                    </li>
+                    <li class="icecek" id="ayran">
+                        <input type="number" id="ayran-fiyat" value="10" class="icecek-fiyat" readonly></input>
+                        <p class="icecek-tl-sembol">₺</p>
+                        <p class="icecek-text" id="ayran-text">Ayran</p>
+                        <div class="add" id="add-ayran">Sepete Ekle</div>
+                    </li>
+                    <li class="icecek" id="salgam">
+                        <input type="number" id="salgam-fiyat" value="15" class="icecek-fiyat" readonly></input>
+                        <p class="icecek-tl-sembol">₺</p>
+                        <p class="icecek-text" id="salgam-text">Şalgam</p>
+                        <div class="add" id="add-salgam">Sepete Ekle</div>
+                    </li>
+            </div>
+
+            <div id="yemek-ozel-container">
+                <p id="sepet-text">Sepetiniz boş...</p>
+                <div id="sepet-container">
+                    <div id="sepet-top-side">
+                        <p id="sepetiniz">Sepetiniz</p>
+                    </div>
+
+                    <div id="sepet-main-side">
+                        <ul id="sepet-ul">
+                        </ul>
+                    </div>
+
+                    <div id="sepet-bottom-side">
+                        <p id="toplam-text">Toplam Tutar:</p>
+                        <p id="toplam-tutar"></p>
+                        <p id="tl">₺</p>
+                        <button id="siparis-onay-btn" type="submit">Siparişi Onayla</button>
+                    </div>
+
+                </div>
+            </div>
+            <div id="sepet-odeme-container">
+                <p id="sepet-odeme-text">SİPARİŞİNİZ BAŞARIYLA ALINMIŞTIR.</p>
+                <p id="sepet-fiyat-info">500 TL tutarı, sınav günü salon başkanına teslim ediniz.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var adlar = document.getElementById("adlar")
+        var isim = localStorage.getItem("value")
+        adlar.innerHTML = isim
+    </script>
+    <script src="main.js"></script>
+</body>
+
+</html>
