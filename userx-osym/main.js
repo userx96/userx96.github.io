@@ -784,7 +784,7 @@ $(document).ready(() => {
             })
             sepet_fiyat_info.innerHTML = `<b>${total} TL</b> tutarı, sınav günü salon başkanına teslim ediniz.`
             setTimeout(() => {
-                window.location.href = "/index.html"
+                window.location.href = "/userx-osym/index.html"
             }, 4500);
         }
     })
