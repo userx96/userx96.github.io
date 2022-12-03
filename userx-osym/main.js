@@ -9,7 +9,7 @@ $(document).ready(() => {
     })
 
     $("#sisteme-giris").click(() => {
-        window.location.href = "/login.html"
+        window.location.href = "/userx-osym/login.html"
     })
 
     $("#appstore").click(() => {
