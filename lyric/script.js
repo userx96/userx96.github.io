@@ -1,4 +1,3 @@
-
 const textarea = document.getElementById('lyric-textarea');
 const vowels = /[aeıioöuüAEIİOÖUÜ]/g;
 
@@ -11,10 +10,24 @@ function stripSyllableCount(line) {
     return line.replace(/\s*\(\d+\)\s*$/, '');
 }
 
-textarea.addEventListener('input', () => {
-    const cursorPos = textarea.selectionStart;
+let skipInput = false;
 
-    let lines = textarea.value.split('\n');
+textarea.addEventListener('keydown', (e) => {
+    if (e.key === ' ') {
+        skipInput = true;
+    }
+});
+
+textarea.addEventListener('input', () => {
+    if (skipInput) {
+        skipInput = false;  
+        return;
+    }
+
+    const cursorPos = textarea.selectionStart;
+    const originalValue = textarea.value;
+
+    let lines = originalValue.split('\n');
 
     lines = lines.map(line => {
         const cleanLine = stripSyllableCount(line);
@@ -23,10 +36,9 @@ textarea.addEventListener('input', () => {
         return `${cleanLine} (${syllables})`;
     });
 
-    const newValue = lines.join('\n');
-
-    const originalLines = textarea.value.split('\n');
+    const originalLines = originalValue.split('\n');
     let pos = 0, lineIndex = 0, charIndex = 0;
+
     for (let i = 0; i < originalLines.length; i++) {
         const len = originalLines[i].length + 1;
         if (cursorPos <= pos + len - 1) {
@@ -38,7 +50,6 @@ textarea.addEventListener('input', () => {
     }
 
     const cleanLineLength = stripSyllableCount(lines[lineIndex]).length;
-
     if (charIndex > cleanLineLength) charIndex = cleanLineLength;
 
     let newCursorPos = 0;
@@ -46,7 +57,6 @@ textarea.addEventListener('input', () => {
         newCursorPos += lines[i].length + 1;
     }
     newCursorPos += charIndex;
-
-    textarea.value = newValue;
+    textarea.value = lines.join('\n');
     textarea.selectionStart = textarea.selectionEnd = newCursorPos;
 });
