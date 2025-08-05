@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: "PT Sans", sans-serif;
+}
+html,
+body {
+    height: 100vh;
+}
+
+#wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0d0c0dea;
+    backdrop-filter: blur(10%);
+    overflow: hidden;
+    position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px rgba(196, 195, 195, 0.336); 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(253, 253, 253, 0.635); 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(253, 253, 253, 0.799); 
+}
+
+#lyric-textarea {
+    resize: none;
+    width: 90vw;
+    height: 80vh;
+    border: 1px solid rgba(255, 255, 255, 0.377);
+    border-radius: 10px;
+    box-shadow: 3px 3px 50px rgba(255, 255, 255, 0.169);
+    background-color: #0d0c0dea;
+    outline: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 20px;
+    text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.856);
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    #lyric-textarea {
+        font-size: 1rem;
+        padding: 15px;
+    }
+
+    #wrapper {
+        padding: 10px;
+    }
+}
+
