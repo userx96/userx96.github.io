@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UserX</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      overflow: hidden;
+    }
+    a {
+        position: absolute;
+        color: white;
+        text-shadow: 0px 0px 10px white;
+        text-decoration: underline;
+        font-size: 2rem;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+    }
+    #userx-phone {
+        top: 30%;
+    }
+    #userx-tkm {
+        top: 40%;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+</head>
+<body>
+    <a id="userx-phone" href="https://userx96.github.io/userx-phone/">UserX Phone</a>
+    <a id="userx-tkm" href="https://userx96.github.io/userx-tkm/">Taş Kağıt Makas</a>
+    <a id="userx-lyric" href="https://userx96.github.io/lyric/">Hece Sayısı Gösterici</a>
+  <script>
+    var isMouseDown = false;
+    var emptySlot = "emptySlot", planeTop = "planeTop", planeBottom = "planeBottom";
+    var camera, scene, renderer;
+    var mouse = {x: 0, y: 0};
+    var camPos = {x: 0, y: 0, z: 10};
+    var sw = window.innerWidth, sh = window.innerHeight;
+    var cols = 20;
+    var rows = 16;
+    var gap = 20;
+    var size = { width: 100, height: 30, depth: 150 };
+    var planeOffset = 250;
+    var allRowsDepth = rows * (size.depth + gap);
+    var allColsWidth = cols * (size.depth + gap);
+    var speedNormal = 4;
+    var speedFast = 34;
+    var speed = speedNormal;
+    var boxes = { planeBottom: [], planeTop: [] };
+    var boxes1d = [];
+
+    function num(min, max) { return Math.random() * (max - min) + min; }
+
+    function draw(props) {
+      var colours = {
+        slow: { r: num(0, 0.2), g: num(0.5, 0.9), b: num(0.3, 0.7) },
+        fast: { r: num(0.9, 1.0), g: num(0.1, 0.7), b: num(0.2, 0.5) }
+      };
+
+      var uniforms = {
+        r: { type: "f", value: colours.slow.r },
+        g: { type: "f", value: colours.slow.g },
+        b: { type: "f", value: colours.slow.b },
+        distanceX: { type: "f", value: 1.0 },
+        distanceZ: { type: "f", value: 1.0 },
+        pulse: { type: "f", value: 0 },
+        speed: { type: "f", value: speed }
+      };
+
+      var material = new THREE.ShaderMaterial({
+        uniforms: uniforms,
+        vertexShader: vertexShader,
+        fragmentShader: fragmentShader
+      });
+
+      var geometry = new THREE.BoxGeometry(props.width, props.height, props.depth);
+      var object = new THREE.Mesh(geometry, material);
+      object.colours = colours;
+      return object;
+    }
+
+    function init() {
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(100, sw / sh, 1, 10000);
+      scene.add(camera);
+      renderer = new THREE.WebGLRenderer();
+      renderer.setSize(sw, sh);
+
+      for (var j = 0; j < rows; j++) {
+        boxes.planeBottom[j] = [];
+        boxes.planeTop[j] = [];
+        for (var i = 0; i < cols; i++) {
+          boxes.planeBottom[j][i] = emptySlot;
+          boxes.planeTop[j][i] = emptySlot;
+        }
+      }
+
+      function createBox() {
+        var xi = Math.floor(Math.random() * cols);
+        var yi = Math.random() > 0.5 ? 1 : -1;
+        var zi = Math.floor(Math.random() * rows);
+        var x = (xi - cols / 2) * (size.width + gap);
+        var y = yi * planeOffset;
+        var z = zi * (size.depth + gap);
+        var yai = yi === -1 ? planeBottom : planeTop;
+
+        if (boxes[yai][zi][xi] === emptySlot) {
+          var box = draw(size);
+          box.position.y = y;
+          box.isWarping = false;
+          box.offset = {x: x, z: 0};
+          box.posZ = z;
+          boxes[yai][zi][xi] = box;
+          boxes1d.push(box);
+          scene.add(box);
+        }
+      }
+
+      for (var i = 0, il = rows * cols; i < il; i++) {
+        createBox();
+      }
+
+      document.body.appendChild(renderer.domElement);
+
+      function listen(events, callback) {
+        for (var i = 0; i < events.length; i++) {
+          window.addEventListener(events[i], callback);
+        }
+      }
+
+      listen(["resize"], function () {
+        sw = window.innerWidth;
+        sh = window.innerHeight;
+        camera.aspect = sw / sh;
+        camera.updateProjectionMatrix();
+        renderer.setSize(sw, sh);
+      });
+      listen(["mousedown", "touchstart"], () => isMouseDown = true);
+      listen(["mouseup", "touchend"], () => isMouseDown = false);
+      listen(["mousemove", "touchmove"], function (e) {
+        if (e.changedTouches && e.changedTouches[0]) e = e.changedTouches[0];
+        mouse.x = (e.clientX / sw) * 2 - 1;
+        mouse.y = -(e.clientY / sh) * 2 + 1;
+      });
+
+      render(0);
+    }
+
+    function move(x, y, z) {   
+        camPos.x += (x - camPos.x) * 0.05;
+  camPos.y += (y - camPos.y) * 0.05;
+  camPos.z += (z - camPos.z) * 0.05;
+
+  camera.position.set(camPos.x, camPos.y, camPos.z);
+  camera.lookAt(scene.position); 
+}
+
+    function render(time) { 
+        requestAnimationFrame(render);
+  speed = isMouseDown ? speedFast : speedNormal;
+
+  boxes1d.forEach(function (box) {
+    box.posZ -= speed;
+    if (box.posZ < -allRowsDepth / 2) {
+      box.posZ += allRowsDepth;
+    }
+
+    var dx = (mouse.x * 0.5) + (box.offset.x / allColsWidth);
+    var dz = 1.2 - Math.abs((box.posZ - allRowsDepth / 2) / allRowsDepth);
+    var pulse = Math.max(0, Math.sin((time + box.posZ) * 0.005));
+
+    box.material.uniforms.r.value = box.colours.slow.r;
+    box.material.uniforms.g.value = box.colours.slow.g;
+    box.material.uniforms.b.value = box.colours.slow.b;
+    box.material.uniforms.pulse.value = pulse;
+    box.material.uniforms.speed.value = speed;
+    box.material.uniforms.distanceX.value = dx;
+    box.material.uniforms.distanceZ.value = dz;
+
+    box.position.x = dx * allColsWidth;
+    box.position.z = box.posZ;
+  });
+
+  move(mouse.x * 400, mouse.y * 200, 800);
+  renderer.render(scene, camera); 
+}
+
+    var vertexShader = `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+        gl_Position = projectionMatrix * mvPosition;
+      }`;
+
+    var fragmentShader = `
+      uniform float r, g, b, distanceZ, distanceX, pulse, speed;
+      varying vec2 vUv;
+      void main(void) {
+        vec2 position = abs(-1.0 + 2.0 * vUv);
+        float edging = abs((pow(position.y, 5.0) + pow(position.x, 5.0)) / 2.0);
+        float perc = (0.2 * pow(speed + 1.0, 2.0) + edging * 0.8) * distanceZ * distanceX;
+        float red = r * perc + pulse;
+        float green = g * perc + pulse;
+        float blue = b * perc + pulse;
+        gl_FragColor = vec4(red, green, blue, 1.0);
+      }`;
+
+    init();
+  </script>
+</body>
+</html>
