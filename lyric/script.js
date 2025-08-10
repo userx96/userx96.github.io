@@ -1,62 +1,84 @@
-const textarea = document.getElementById('lyric-textarea');
-const vowels = /[aeıioöuüAEIİOÖUÜ]/g;
+document.addEventListener('DOMContentLoaded', () => {
+    const textarea = document.getElementById('lyric-textarea');
+    const lineNumbers = document.getElementById('line-numbers');
+    const syllableCounts = document.getElementById('syllable-counts');
+    const clearBtn = document.getElementById('clear-btn');
 
-function countSyllables(line) {
-    const matches = line.match(vowels);
-    return matches ? matches.length : 0;
-}
+    const vowels = /[aeıioöuüAEIİOÖUÜ]/g;
 
-function stripSyllableCount(line) {
-    return line.replace(/\s*\(\d+\)\s*$/, '');
-}
-
-let skipInput = false;
-
-textarea.addEventListener('keydown', (e) => {
-    if (e.key === ' ') {
-        skipInput = true;
-    }
-});
-
-textarea.addEventListener('input', () => {
-    if (skipInput) {
-        skipInput = false;  
-        return;
+    function countSyllables(line) {
+        const matches = line.match(vowels);
+        return matches ? matches.length : 0;
     }
 
-    const cursorPos = textarea.selectionStart;
-    const originalValue = textarea.value;
+    function updateUI() {
+        const lines = textarea.value.split('\n');
+        
+        lineNumbers.innerHTML = '';
+        syllableCounts.innerHTML = '';
 
-    let lines = originalValue.split('\n');
+        let lineNumbersHTML = '';
+        let syllableCountsHTML = '';
 
-    lines = lines.map(line => {
-        const cleanLine = stripSyllableCount(line);
-        if (cleanLine.trim() === '') return '';
-        const syllables = countSyllables(cleanLine);
-        return `${cleanLine} (${syllables})`;
+        lines.forEach((line, index) => {
+            lineNumbersHTML += `<div>${index + 1}</div>`;
+            
+            const syllables = countSyllables(line);
+            const truncatedLine = line.substring(0, 30) + (line.length > 30 ? '...' : '');
+
+            const lineText = line.trim() === '' ? 'Boş Satır' : truncatedLine;
+
+            const newDiv = document.createElement('div');
+            
+            const lineTextSpan = document.createElement('span');
+            lineTextSpan.className = 'line-text';
+            lineTextSpan.textContent = lineText;
+            
+            const countSpan = document.createElement('span');
+            countSpan.className = 'count';
+            countSpan.textContent = syllables;
+            
+            newDiv.appendChild(lineTextSpan);
+            newDiv.appendChild(countSpan);
+            
+            syllableCounts.appendChild(newDiv);
+        });
+
+        lineNumbers.innerHTML = lineNumbersHTML;
+
+        // Animate count update
+        const counts = syllableCounts.querySelectorAll('.count');
+        counts.forEach(count => {
+            count.style.animation = 'none';
+            count.offsetHeight; // Trigger reflow
+            count.style.animation = '';
+        });
+    }
+
+    function debounce(func, delay = 250) {
+        let timeoutId;
+        return (...args) => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                func.apply(this, args);
+            }, delay);
+        };
+    }
+
+    const debouncedUpdate = debounce(updateUI);
+
+    textarea.addEventListener('input', debouncedUpdate);
+
+    textarea.addEventListener('scroll', () => {
+        lineNumbers.scrollTop = textarea.scrollTop;
+        syllableCounts.scrollTop = textarea.scrollTop;
     });
 
-    const originalLines = originalValue.split('\n');
-    let pos = 0, lineIndex = 0, charIndex = 0;
+    clearBtn.addEventListener('click', () => {
+        textarea.value = '';
+        updateUI();
+    });
 
-    for (let i = 0; i < originalLines.length; i++) {
-        const len = originalLines[i].length + 1;
-        if (cursorPos <= pos + len - 1) {
-            lineIndex = i;
-            charIndex = cursorPos - pos;
-            break;
-        }
-        pos += len;
-    }
-
-    const cleanLineLength = stripSyllableCount(lines[lineIndex]).length;
-    if (charIndex > cleanLineLength) charIndex = cleanLineLength;
-
-    let newCursorPos = 0;
-    for (let i = 0; i < lineIndex; i++) {
-        newCursorPos += lines[i].length + 1;
-    }
-    newCursorPos += charIndex;
-    textarea.value = lines.join('\n');
-    textarea.selectionStart = textarea.selectionEnd = newCursorPos;
+    // Initial UI update for placeholder or existing text
+    updateUI();
 });
