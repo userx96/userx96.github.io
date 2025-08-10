@@ -3,12 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hece Sayısı Gösterici</title>
+    <title>Userx96 Hece Sayar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="wrapper">
-        <textarea name="lyrics" id="lyric-textarea" spellcheck="false"></textarea>
+    <div class="container">
+        <header>
+            <h1>Userx96 Hece Sayar</h1>
+            <p>Her satırın hece sayısını anında görün.</p>
+        </header>
+        <main>
+            <div class="editor">
+                <div id="line-numbers" class="line-numbers"></div>
+                <textarea name="lyrics" id="lyric-textarea" spellcheck="false" placeholder="Şarkı sözlerini buraya yaz..."></textarea>
+            </div>
+            <div id="syllable-counts" class="syllable-counts"></div>
+        </main>
+        <footer>
+            <button id="clear-btn">Temizle</button>
+        </footer>
     </div>
 
     <script src="script.js"></script>
